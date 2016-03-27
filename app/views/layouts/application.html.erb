@@ -15,9 +15,9 @@
   <div class="row">
     <div class="col-3">
       <ul class="menu">
-        <li> <%= link_to_unless_current "Home", root_url %> </li>
-        <li> <%= link_to_unless_current "Manage Food Groups", food_groups_path %> </li>
-
+        <li class=<%= controller_name == 'welcome' ? 'active' : nil%>> <%= link_to_unless_current "Home", root_url %> </li>
+        <li class=<%= controller_name == 'entries' ? 'active' : nil%>> <%= link_to_unless_current "Food Log", entries_path %> </li>
+        <li class=<%= controller_name == 'food_groups' ? 'active' : nil%>> <%= link_to_unless_current "Manage Food Groups", food_groups_path %> </li>
       </ul>
     </div>
     <div class="col-9">
