@@ -1,15 +1,15 @@
 <% if user_signed_in? %>
 <div class="row">
-  <div class="col-3 col-m-4">
+  <div class="col-4 col-m-4">
     <div class="bigbutton">
       <div class="title">Log Entries</div>
       <%= link_to current_user.entries.count, new_entry_path %>
     </div>
   </div>
-  <div class="col-3 col-m-4">
+  <div class="col-4 col-m-4">
     You have made <strong><%= current_user.entries.count %></strong> log entries!
   </div>
-  <div class="col-3 col-m-4">
+  <div class="col-4 col-m-4">
     You have made <strong><%= current_user.entries.count %></strong> log entries!
   </div>
 </div>
