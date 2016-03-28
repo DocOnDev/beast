@@ -66,22 +66,26 @@
 .show-menu {
 	text-decoration: none;
 	color: #333;
-	background: #bbb;
 	text-align: center;
 	padding: 14px 0;
 	display: none;
-  border-radius: 0px 0px 8px 8px;
 }
 
 /*Hide checkbox*/
-input[type=checkbox]{
+#show-menu{
     display: none;
 }
 
 /*Show menu when invisible checkbox is checked*/
-input[type=checkbox]:checked ~ .menu{
+#show-menu:checked ~ .menu{
     display: block;
     position: static;
+}
+#show-menu:checked ~  ul.menu li {
+  border-top: 1px #bbb solid;
+}
+#show-menu:checked ~  ul.menu li ul li {
+  border-top: none;
 }
 
  @media screen and (max-width : 768px) {
