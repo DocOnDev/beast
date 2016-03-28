@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:index, :show, :edit, :update]
   resources :entries
   resources :food_groups
   root 'welcome#index'
