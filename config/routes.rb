@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :entries
   resources :food_groups
   root 'welcome#index'

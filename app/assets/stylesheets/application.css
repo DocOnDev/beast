@@ -48,6 +48,25 @@
     padding: 15px;
  }
 
+ .header a {
+   text-decoration: none;
+   display: block;
+   padding: 10px 0px 10px 12px;
+   background-color: #eee;
+   width: 40%;
+   float: left;
+   margin-right: 10px;
+ }
+
+ .header a:hover {
+   background-color: #555;
+   color: #fff;
+ }
+
+ .userinfo {
+   padding: 30px 0px;
+ }
+
  .menu ul {
     margin: 0;
     padding: 0;

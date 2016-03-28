@@ -4,7 +4,8 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.all
+    # @entries = Entry.all
+    @entries = Entry.where(:user_id => current_user.id)
   end
 
   # GET /entries/1
@@ -69,6 +70,6 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params.require(:entry).permit(:food_group_id, :username, :date, :portion, :description)
+      params.require(:entry).permit(:food_group_id, :user_id, :date, :portion, :description)
     end
 end

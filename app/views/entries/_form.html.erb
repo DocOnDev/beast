@@ -12,13 +12,11 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
   <div class="field">
     <%= f.label :food_group_id %><br>
     <%= f.collection_select :food_group_id, FoodGroup.order(:name),:id,:name, include_blank: true %>
-  </div>
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
   </div>
   <div class="field">
     <%= f.label :date %><br>

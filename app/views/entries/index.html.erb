@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Food group</th>
-      <th>Username</th>
+      <!-- <th>User</th> -->
       <th>Date</th>
       <th>Portion</th>
       <th>Description</th>
@@ -16,7 +16,7 @@
     <% @entries.each do |entry| %>
       <tr>
         <td><%= entry.food_group.name %></td>
-        <td><%= entry.username %></td>
+        <!-- <td><%= entry.username ? entry.username : entry.user.email %></td> -->
         <td><%= entry.date %></td>
         <td><%= entry.portion %></td>
         <td><%= entry.description %></td>
