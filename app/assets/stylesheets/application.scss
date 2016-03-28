@@ -61,6 +61,53 @@
      .col-12 {width: 100%;}
  }
 
+/* Responsive menus */
+/*Style 'show menu' label button and hide it by default*/
+.show-menu {
+	text-decoration: none;
+	color: #333;
+	background: #bbb;
+	text-align: center;
+	padding: 14px 0;
+	display: none;
+  border-radius: 0px 0px 8px 8px;
+}
+
+/*Hide checkbox*/
+input[type=checkbox]{
+    display: none;
+}
+
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]:checked ~ .menu{
+    display: block;
+    position: static;
+}
+
+ @media screen and (max-width : 768px) {
+	/*Make dropdown links appear inline*/
+	ul.menu {
+		display: none;
+	}
+	ul.menu li,, ul.menu li ul li {
+    position: static;
+    display: block;
+	}
+  /*Display the dropdown on hover*/
+  ul.menu li a:hover + .hidden, .hidden:hover {
+    position: static;
+  }
+
+	/*Make all menu links full width*/
+	ul.menu li, ul.menu li a, ul.menu li ul {
+		width: 100%;
+	}
+  /*Display 'show menu' link*/
+	.show-menu {
+		display:block;
+	}
+}
+
  .row:after {
     content: "";
     clear: both;
@@ -68,10 +115,10 @@
  }
 
  .header {
-    background-color: #009933;
-    color: #ffffff;
+    background-color: #093;
+    color: #fff;
     padding: 15px;
-    border-radius: 12px;
+    border-radius: 12px 12px 0px 0px;
  }
 
  .header a {
@@ -94,36 +141,86 @@
    text-align: right;
  }
 
-  ul.menu {
+  ul.menu, ul.menu li ul {
     margin: 0;
     padding: 0;
+    list-style-type:none;
+    position: absolute;
  }
- ul.menu > li:first-child {border-top-left-radius: 12px;border-top-right-radius: 12px;}
- ul.menu > li:last-child {border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;}
 
  .menu li {
-   list-style-type: none;
-    background-color: #eee;
- }
- .menu li:hover { background-color: #555; }
- .menu li.active {
-   list-style-type: none;
-    background-color: #093;
-    color: #fff;
-    padding: 10px 0px 10px 12px;
+   display:inline-block;
+   float: left;
  }
 
+ .menu li:hover { background-color: #fff; }
+
  .menu li a {
-  text-decoration: none;
-  display: block;
-  padding: 10px 0px 10px 12px;
+   display: block;
+   min-width:140px;
+   height: 50px;
+   text-align: center;
+   line-height: 50px;
+   background-color: #ccc;
+   text-decoration: none;
  }
+
+.menu li:hover a {
+	background: #555;
+  color: #fff;
+  border-radius: 2px;
+}
+
  .menu li a:hover {
    color: #fff;
    background-color: #555;
  }
- ul.menu > li:first-child a:hover {border-top-left-radius: 12px;border-top-right-radius: 12px;}
- ul.menu > li:last-child a:hover {border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;}
+
+ /*Style for dropdown links*/
+ .menu li:hover ul a {
+ 	background: #ccc;
+ 	color: #333;
+ 	height: 40px;
+ 	line-height: 40px;
+ }
+
+ /*Hover state for dropdown links*/
+ .menu li:hover ul a:hover {
+ 	background: #093;
+ 	color: #fff;
+ }
+ /*Hide dropdown links until they are needed*/
+ .menu li ul {
+ 	display: none;
+ }
+
+ /*Make dropdown links vertical*/
+ .menu li ul li {
+ 	display: block;
+ 	float: none;
+ }
+
+ /*Prevent text wrapping*/
+ .menu li ul li a {
+ 	width: auto;
+ 	min-width: 150px;
+ 	padding: 0 20px;
+ }
+
+ /*Display the dropdown on hover*/
+ ul.menu li a:hover + .hidden, .hidden:hover {
+ 	display: block;
+ }
+
+ .menu-container {
+   border: 0px;
+   padding: 0px 10px;
+   width: 100%;
+   display: block;
+   background-color: #ccc;
+   border-radius: 0px 0px 12px 12px;
+   min-height: 50px;
+ }
 
  .bigbutton {
    padding: 10px;

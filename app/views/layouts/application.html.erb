@@ -24,28 +24,43 @@
       </div>
     </div>
   </div>
-
-  <div class="container">
-    <p id="notice"><%= notice %></p>
-  </div>
-
   <div class="row">
-    <div class="col-3 col-m-12">
+    <div class="col-12 menu-container">
+      <label for="show-menu" class="show-menu">Toggle Menu</label>
+      <input type="checkbox" id="show-menu" role="button">
       <ul class="menu">
         <% if user_signed_in? %>
-          <li class=<%= controller_name == 'welcome' ? 'active' : nil%>> <%= link_to_unless_current "Home", root_url %> </li>
-          <li class=<%= controller_name == 'entries' ? 'active' : nil%>> <%= link_to_unless_current "Food Log", entries_path %> </li>
-          <li class=<%= controller_name == 'food_groups' ? 'active' : nil%>> <%= link_to_unless_current "Manage Food Groups", food_groups_path %> </li>
+          <li> <%= link_to "Home", root_url %> </li>
+          <li>
+            <a href="#">Food &#65516;</a>
+            <ul class="hidden">
+              <li> <%= link_to "New Entry", new_entry_path %> </li>
+              <li> <%= link_to "View Log", entries_path %> </li>
+              <li> <%= link_to "Manage Foods", food_groups_path %> </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">User &#65516;</a>
+            <ul class="hidden">
+              <li><%= link_to 'Profile', edit_user_registration_path %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+            </ul>
+          </li>
 
-          <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
         <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
-          <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+          <li><%= link_to "Sign up", new_user_registration_path  %></li>
+          <li><%= link_to "Login", new_user_session_path  %></li>
         <% end %>
       </ul>
     </div>
-    <div class="col-9 col-m-12">
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="container">
+        <p id="notice"><%= notice %></p>
+      </div>
+
       <%= yield %>
     </div>
   </div>
