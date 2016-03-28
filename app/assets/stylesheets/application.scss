@@ -18,22 +18,47 @@
 
  * { box-sizing: border-box; }
 
- .col-1 {width: 8.33%;}
- .col-2 {width: 16.66%;}
- .col-3 {width: 25%;}
- .col-4 {width: 33.33%;}
- .col-5 {width: 41.66%;}
- .col-6 {width: 50%;}
- .col-7 {width: 58.33%;}
- .col-8 {width: 66.66%;}
- .col-9 {width: 75%;}
- .col-10 {width: 83.33%;}
- .col-11 {width: 91.66%;}
- .col-12 {width: 100%;}
-
  [class*="col-"] {
     float: left;
     padding: 10px;
+ }
+
+
+ /* For mobile phones: */
+ [class*="col-"] {
+     width: 100%;
+ }
+
+ @media only screen and (min-width: 600px) {
+     /* For tablets: */
+     .col-m-1 {width: 8.33%;}
+     .col-m-2 {width: 16.66%;}
+     .col-m-3 {width: 25%;}
+     .col-m-4 {width: 33.33%;}
+     .col-m-5 {width: 41.66%;}
+     .col-m-6 {width: 50%;}
+     .col-m-7 {width: 58.33%;}
+     .col-m-8 {width: 66.66%;}
+     .col-m-9 {width: 75%;}
+     .col-m-10 {width: 83.33%;}
+     .col-m-11 {width: 91.66%;}
+     .col-m-12 {width: 100%;}
+ }
+
+ @media only screen and (min-width: 768px) {
+     /* For desktop: */
+     .col-1 {width: 8.33%;}
+     .col-2 {width: 16.66%;}
+     .col-3 {width: 25%;}
+     .col-4 {width: 33.33%;}
+     .col-5 {width: 41.66%;}
+     .col-6 {width: 50%;}
+     .col-7 {width: 58.33%;}
+     .col-8 {width: 66.66%;}
+     .col-9 {width: 75%;}
+     .col-10 {width: 83.33%;}
+     .col-11 {width: 91.66%;}
+     .col-12 {width: 100%;}
  }
 
  .row:after {
@@ -46,6 +71,7 @@
     background-color: #009933;
     color: #ffffff;
     padding: 15px;
+    border-radius: 12px;
  }
 
  .header a {
@@ -67,10 +93,13 @@
    padding: 30px 0px;
  }
 
- .menu ul {
+  ul.menu {
     margin: 0;
     padding: 0;
  }
+ ul.menu > li:first-child {border-top-left-radius: 12px;border-top-right-radius: 12px;}
+ ul.menu > li:last-child {border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;}
+
  .menu li {
    list-style-type: none;
     background-color: #eee;
@@ -78,7 +107,7 @@
  .menu li:hover { background-color: #555; }
  .menu li.active {
    list-style-type: none;
-    background-color: #009933;
+    background-color: #093;
     color: #fff;
     padding: 10px 0px 10px 12px;
  }
@@ -91,6 +120,34 @@
  .menu li a:hover {
    color: #fff;
    background-color: #555;
+ }
+ ul.menu > li:first-child a:hover {border-top-left-radius: 12px;border-top-right-radius: 12px;}
+ ul.menu > li:last-child a:hover {border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;}
+
+ .bigbutton {
+   padding: 10px;
+   background-color: #093;
+   height: 180px;
+   border-radius: 12px;
+ }
+
+ .bigbutton a {
+   display: block;
+   margin-top: 10px;
+   padding: 60px 0px;
+   background-color: #eee;
+   height: 130px;
+   text-decoration: none;
+   font-size: 800%;
+   text-align: center;
+   vertical-align: middle;
+   border-radius: 8px;
+ }
+
+ .bigbutton .title {
+   color: #fff;
+   font-size: 20px;
+   text-align: center;
  }
 
 body {
@@ -146,7 +203,7 @@ div {
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
+  background-color: #eee;
 
   h2 {
     text-align: left;
@@ -173,15 +230,30 @@ table {
 th, td {
     text-align: left;
     padding: 8px;
-    border-bottom: 1px solid #ddd;
 }
 
+td { border-top: 1px solid #ddd; }
+
 th {
-    background-color: #009933;
+    background-color: #093;
     color: white;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+thead tr:first-child th:first-child {
+    border-radius: 12px 0 0 0;
+}
+thead tr:first-child th:last-child {
+    border-radius: 0 12px 0 0;
+}
+tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 12px;
+}
+tbody tr:last-child td:last-child {
+    border-radius: 0 0 12px 0;
+}
+
+tr {background-color: #ddd}
+tr:nth-child(even){background-color: #eee}
 
 input[type=text], input[type=number], select {
     width: 100%;
@@ -206,7 +278,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #009933;
+    background-color: #093;
 }
 
 textarea {
@@ -222,7 +294,7 @@ textarea {
 form div { padding: 10px 0px}
 div .formContainer {
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: #eee;
     padding: 40px;
 }
 
