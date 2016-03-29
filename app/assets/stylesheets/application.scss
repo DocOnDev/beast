@@ -229,18 +229,18 @@
  .bigbutton {
    padding: 10px;
    background-color: #093;
-   height: 180px;
+   height: 150px;
    border-radius: 12px;
  }
 
  .bigbutton a {
    display: block;
-   margin-top: 10px;
-   padding: 60px 0px;
+   margin-top: 1vw;
+   padding: 40px 0px;
    background-color: #eee;
-   height: 130px;
+   height: 100px;
    text-decoration: none;
-   font-size: 800%;
+   font-size: 90px;
    text-align: center;
    vertical-align: middle;
    border-radius: 8px;
@@ -248,8 +248,12 @@
 
  .bigbutton .title {
    color: #fff;
-   font-size: 20px;
+   font-size: 15px;
+   height: 20px;
+   overflow: hidden;
+   white-space: nowrap;
    text-align: center;
+   text-overflow: ellipsis;
  }
 
 body {
@@ -404,7 +408,6 @@ label {
   font-weight: 400;
   font-size: 16px;
 }
-
-[id*="entry_date"] {
-  width: 32%;
-}
+.year { width: 29%; }
+.month { width: 49% }
+.day { width: 20% }

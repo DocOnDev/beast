@@ -1,20 +1,8 @@
 <% if user_signed_in? %>
 <div class="row">
-  <div class="col-3 col-m-3">
-    <div class="bigbutton">
-      <div class="title">Log Entries</div>
-      <%= link_to current_user.entries.count, new_entry_path %>
-    </div>
-  </div>
-  <div class="col-3 col-m-3">
-    You have made <strong><%= current_user.entries.count %></strong> log entries!
-  </div>
-  <div class="col-3 col-m-3">
-    You have made <strong><%= current_user.entries.count %></strong> log entries!
-  </div>
-  <div class="col-3 col-m-3">
-    You have made <strong><%= current_user.entries.count %></strong> log entries!
-  </div>
+  <% current_user.daily_log.each do |name,portion| %>
+    <%= render "big_button", :title => name, :value => portion %>
+  <% end %>
 </div>
 <% else %>
 <%= link_to "Login", new_user_session_path  %>

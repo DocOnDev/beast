@@ -1,0 +1,40 @@
+<div class="formContainer">
+<%= form_for(@diet) do |f| %>
+  <% if @diet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@diet.errors.count, "error") %> prohibited this diet from being saved:</h2>
+
+      <ul>
+      <% @diet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <div class="field">
+    <%= f.label :start %><br>
+    <%= f.date_select :start, :with_css_classes => true %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br>
+    <%= f.date_select :end, :with_css_classes => true %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <h2>Daily Allowances</h2>
+    <%= f.fields_for :intakes do |intake_f| %>
+      <%= render "intake_fields", :ff => intake_f %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+</div>

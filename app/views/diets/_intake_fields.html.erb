@@ -1,0 +1,7 @@
+  <div>
+    <%= ff.label :food_group_id %><br>
+    <%= ff.collection_select :food_group_id, FoodGroup.order(:name),:id,:name, include_blank: true %>
+
+    <%= ff.label :quantity %>
+    <%= ff.text_field :quantity %>
+  </div>

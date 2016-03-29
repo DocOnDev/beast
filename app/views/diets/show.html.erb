@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @diet.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @diet.end %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @diet.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @diet.user.email %>
+</p>
+
+<p>
+  <strong>Allowances:</strong>
+  Before:
+  <%= @diet.intakes.each do |intake| %>
+    During:
+    <strong><%= intake.food_group.name %></strong>
+    <%= intake.quantity %>
+  <% end %>
+  After:
+</p>
+
+<%= link_to 'Edit', edit_diet_path(@diet) %> |
+<%= link_to 'Back', diets_path %>

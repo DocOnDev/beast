@@ -34,15 +34,15 @@
           <li>
             <a href="#">Food &#65516;</a>
             <ul class="hidden">
-              <li> <%= link_to "New Entry", new_entry_path %> </li>
-              <li> <%= link_to "View Log", entries_path %> </li>
-              <li> <%= link_to "Manage Foods", food_groups_path %> </li>
+              <li> <%= link_to "Log Food", new_entry_path %> </li>
+              <li> <%= link_to "Food Diary", entries_path %> </li>
+              <li> <%= link_to "Food Groups", food_groups_path %> </li>
             </ul>
           </li>
           <li>
             <a href="#">User &#65516;</a>
             <ul class="hidden">
-              <li><%= link_to 'Profile', edit_user_registration_path %></li>
+              <li><%= link_to 'Change Password', edit_user_registration_path %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
             </ul>
           </li>
