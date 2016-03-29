@@ -20,10 +20,10 @@ class User < ActiveRecord::Base
     food_groups = FoodGroup.all
     food_groups.each { |fg| logs[fg.name] = 0.0 }
 
-    entries.where(date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).find_each do |entry|
+    entries.today.each do |entry|
       logs[entry.food_group.name] += entry.portion
     end
-    return logs
+    logs
   end
 
 end
