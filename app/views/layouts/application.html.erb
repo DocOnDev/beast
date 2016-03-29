@@ -42,6 +42,7 @@
           <li>
             <a href="#">User &#65516;</a>
             <ul class="hidden">
+              <li><%= link_to 'Manage Diets', diets_path %></li>
               <li><%= link_to 'Change Password', edit_user_registration_path %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
             </ul>
