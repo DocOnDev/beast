@@ -16,6 +16,7 @@ class EntriesController < ApplicationController
   # GET /entries/new
   def new
     @entry = Entry.new
+    @entry.food_group_id = FoodGroup.find_by(:name => params[:food_group_name]).id if params[:food_group_name]
   end
 
   # GET /entries/1/edit

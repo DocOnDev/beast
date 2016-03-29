@@ -24,7 +24,7 @@
   </div>
   <div class="field">
     <%= f.label :portion %><br>
-    <%= f.text_field :portion %>
+    <%= f.text_field :portion, :autofocus => params[:food_group_name].present? %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
