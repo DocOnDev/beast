@@ -3,7 +3,8 @@ class Diet < ActiveRecord::Base
   has_many :intakes
   has_many :food_groups, :through => :intakes
 
-  accepts_nested_attributes_for :intakes #,
-  # :allow_destroy => true,
-  # :reject_if     => :all_blank
+  accepts_nested_attributes_for :intakes ,
+  :allow_destroy => true,
+  :reject_if     => :all_blank
+
 end
