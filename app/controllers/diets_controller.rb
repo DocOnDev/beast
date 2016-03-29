@@ -20,7 +20,7 @@ class DietsController < ApplicationController
     @diet = Diet.new
     food_groups = FoodGroup.all
     food_groups.each {|fg|
-      intake = @diet.intakes.build(:food_group_id => fg.id)
+      @diet.intakes.build(:food_group_id => fg.id)
     }
   end
 
@@ -76,6 +76,6 @@ class DietsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def diet_params
-      params.require(:diet).permit(:start, :end, :description, :user_id)
+      params.require(:diet).permit(:start, :end, :description, :user_id, intakes_attributes: [:id, :diet_id, :food_group_id, :quantity])
     end
 end

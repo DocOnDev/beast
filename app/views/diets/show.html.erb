@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Start:</strong>
   <%= @diet.start %>
@@ -21,14 +19,12 @@
 </p>
 
 <p>
-  <strong>Allowances:</strong>
-  Before:
-  <%= @diet.intakes.each do |intake| %>
-    During:
+  <strong>Allowances:</strong><br />
+  <% @diet.intakes.each do |intake| %>
     <strong><%= intake.food_group.name %></strong>
     <%= intake.quantity %>
+    <br />
   <% end %>
-  After:
 </p>
 
 <%= link_to 'Edit', edit_diet_path(@diet) %> |
