@@ -2,7 +2,7 @@
   <div class="bigbutton">
     <div class="title"><%=title%></div>
     <div class="body">
-      <%= link_to value, new_entry_path(:food_group_name => title) %>
+      <%= link_to value, new_entry_path(:food_group_name => title, :entry_date => entry_date) %>
     </div>
   </div>
 </div>

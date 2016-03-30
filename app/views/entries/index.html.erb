@@ -33,6 +33,12 @@
   </tbody>
 </table>
 
+<div class="row">
+  <% current_user.daily_progress(@_date).each do |name, values| %>
+    <%= render "welcome/big_button", :title => name, :value => values[:remaining], :entry_date => @_date %>
+  <% end %>
+</div>
+
 <br>
 
 <%= link_to 'New Entry', new_entry_path %>

@@ -28,24 +28,24 @@ class User < ActiveRecord::Base
     active_diet.food_groups
   end
 
-  def daily_progress
+  def daily_progress(_date = Time.zone.now.to_date)
     # Get the allotted daily amounts for each food
     # Get the logged amount
     # progress_data = {"food_group_name" : {"target" : intake.quantity, "consumed" : daily_log[x]}, ...}
     progress = {}
     active_diet.intakes.each do |intake|
-      log = daily_log
+      log = daily_log(_date)
       name = intake.food_group.name
       progress[name] = {:target => intake.quantity + 0.0, :consumed => log[name], :remaining => (intake.quantity - log[name]), :percent => ((log[name] / intake.quantity) * 100).round(2) }
     end
     progress
   end
 
-  def daily_log
+  def daily_log(_date = Time.zone.now.to_date)
     logs = {}
     active_food_groups.each { |fg| logs[fg.name] = 0.0 }
 
-    entries.today.each do |entry|
+    entries.by_day(_date).each do |entry|
       logs[entry.food_group.name] += entry.portion
     end
     logs

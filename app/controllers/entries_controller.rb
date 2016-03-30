@@ -8,6 +8,7 @@ class EntriesController < ApplicationController
     days_ago = (params[:days_ago] || 0).to_i
     @entries = for_date_offset(days_ago)
     @display_date = days_ago.days.ago.strftime("%b %e, %Y")
+    @_date = days_ago.days.ago.to_date
 
     @prev_link = view_context.link_to '<i class="fa fa-calendar-minus-o"></i>'.html_safe, entries_path(:days_ago => days_ago + 1)
     @today_link = view_context.link_to '<i class="fa fa-calendar"></i>'.html_safe, entries_path
