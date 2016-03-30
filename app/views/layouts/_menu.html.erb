@@ -1,0 +1,29 @@
+<div class="col-12 menu-container">
+  <label for="show-menu" class="show-menu">Toggle Menu</label>
+  <input type="checkbox" id="show-menu" role="button">
+  <ul class="menu">
+    <% if user_signed_in? %>
+      <li> <%= link_to "Home", root_url %> </li>
+      <li>
+        <a href="#">Food &#65516;</a>
+        <ul class="hidden">
+          <li> <%= link_to "Log Food", new_entry_path %> </li>
+          <li> <%= link_to "Food Diary", entries_path %> </li>
+          <li> <%= link_to "Food Groups", food_groups_path %> </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">User &#65516;</a>
+        <ul class="hidden">
+          <li><%= link_to 'Profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Diets', diets_path %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+        </ul>
+      </li>
+
+    <% else %>
+      <li><%= link_to "Sign up", new_user_registration_path  %></li>
+      <li><%= link_to "Login", new_user_session_path  %></li>
+    <% end %>
+  </ul>
+</div>
