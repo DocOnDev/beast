@@ -5,7 +5,7 @@
     <% if user_signed_in? %>
       <li> <%= link_to "Home", root_url %> </li>
       <li>
-        <a href="#">Food &#65516;</a>
+        <a href="#">Food <i class="fa fa-chevron-down"></i></a>
         <ul class="hidden">
           <li> <%= link_to "Log Food", new_entry_path %> </li>
           <li> <%= link_to "Food Diary", entries_path %> </li>
@@ -13,7 +13,7 @@
         </ul>
       </li>
       <li>
-        <a href="#">User &#65516;</a>
+        <a href="#">User <i class="fa fa-chevron-down"></i></a>
         <ul class="hidden">
           <li><%= link_to 'Profile', edit_user_registration_path %></li>
           <li><%= link_to 'Diets', diets_path %></li>
