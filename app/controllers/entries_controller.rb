@@ -34,6 +34,7 @@ class EntriesController < ApplicationController
   def new
     @entry = Entry.new
     @entry.food_group_id = FoodGroup.find_by(:name => params[:food_group_name]).id if params[:food_group_name]
+    @entry.date = params[:entry_date] if params[:entry_date]
   end
 
   # GET /entries/1/edit
