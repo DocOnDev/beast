@@ -3,27 +3,25 @@
   <input type="checkbox" id="show-menu" role="button">
   <ul class="menu">
     <% if user_signed_in? %>
-      <li> <%= link_to "Home", root_url %> </li>
+      <li> <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_url %> </li>
       <li>
-        <a href="#">Food <i class="fa fa-chevron-down"></i></a>
+        <a href="#"><i class="fa fa-cutlery"></i> Food <i class="fa fa-chevron-down"></i></a>
         <ul class="hidden">
-          <li> <%= link_to "Log Food", new_entry_path %> </li>
-          <li> <%= link_to "Food Diary", entries_path %> </li>
-          <li> <%= link_to "Food Groups", food_groups_path %> </li>
+          <li> <%= link_to '<i class="fa fa-pencil"></i> Log Food'.html_safe, new_entry_path %> </li>
+          <li> <%= link_to '<i class="fa fa-calendar"></i> Food Diary'.html_safe, entries_path %> </li>
         </ul>
       </li>
       <li>
-        <a href="#">User <i class="fa fa-chevron-down"></i></a>
+        <a href="#"><i class="fa fa-user"></i> User <i class="fa fa-chevron-down"></i></a>
         <ul class="hidden">
-          <li><%= link_to 'Profile', edit_user_registration_path %></li>
-          <li><%= link_to 'Diets', diets_path %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+          <li><%= link_to '<i class="fa fa-user"></i> Profile'.html_safe, edit_user_registration_path %></li>
+          <li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete  %></li>
         </ul>
       </li>
 
     <% else %>
-      <li><%= link_to "Sign up", new_user_registration_path  %></li>
-      <li><%= link_to "Login", new_user_session_path  %></li>
+      <li><%= link_to '<i class="fa fa-user-plus"></i> Sign up'.html_safe, new_user_registration_path  %></li>
+      <li><%= link_to '<i class="fa fa-sign-in"></i> Login'.html_safe, new_user_session_path  %></li>
     <% end %>
   </ul>
 </div>
