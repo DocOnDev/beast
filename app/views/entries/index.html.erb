@@ -1,40 +1,43 @@
-<h1>Diary for <%= @display_date %></h1>
-<table>
-  <thead>
-    <tr>
-      <th>Food group</th>
-      <th>Portion</th>
-      <th>Description</th>
-      <th colspan="3">
-        <div class="date-nav">
-          <div class="nav-button"><%= @next_link %></div>
-          <div class="nav-button"><%= @today_link %></div>
-          <div class="nav-button"><%= @prev_link %></div>
-        </div>
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.food_group.name %></td>
-        <td><%= entry.portion %></td>
-        <td><%= entry.description %></td>
-        <td><%= link_to 'Show', entry %></td>
-        <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <div class="row">
-  <% current_user.daily_progress(@_date).each do |name, values| %>
-    <%= render "welcome/big_button", :title => name, :prompt =>"#{values[:consumed]} of #{values[:target]}", :entry_date => @_date %>
-  <% end %>
+  <h1>Diary for <%= @display_date %></h1>
+  <div class="col-6">
+    <table>
+      <thead>
+        <tr>
+          <th>Food group</th>
+          <th>Portion</th>
+          <th>Description</th>
+          <th colspan="3">
+            <div class="date-nav">
+              <div class="nav-button"><%= @next_link %></div>
+              <div class="nav-button"><%= @today_link %></div>
+              <div class="nav-button"><%= @prev_link %></div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @entries.each do |entry| %>
+          <tr>
+            <td><%= entry.food_group.name %></td>
+            <td><%= entry.portion %></td>
+            <td><%= entry.description %></td>
+            <td><%= link_to 'Show', entry %></td>
+            <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
+            <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6">
+    <% current_user.daily_progress(@_date).each do |name, values| %>
+      <%= render "welcome/big_button", :columns => 6, :title => name, :prompt =>"#{values[:consumed]} of #{values[:target]}", :entry_date => @_date %>
+    <% end %>
+  </div>
 </div>
 
-<br>
+  <br>
 
-<%= link_to 'New Entry', new_entry_path %>
+  <%= link_to 'New Entry', new_entry_path %>
