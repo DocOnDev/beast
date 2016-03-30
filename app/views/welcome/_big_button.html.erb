@@ -2,8 +2,8 @@
 <div class="col-<%=_cols%> col-m-6">
   <div class="bigbutton">
     <div class="title"><%=title%></div>
-    <div class="body tooltip">
-      <span class="tooltiptext">Log <%= title %><br />on<br /><%= entry_date.strftime("%b %e, %Y") %></span><%= link_to prompt, new_entry_path(:food_group_name => title, :entry_date => entry_date) %>
+    <div class="body">
+      <%= link_to prompt, new_entry_path(:food_group_name => title, :entry_date => entry_date) %>
     </div>
   </div>
 </div>

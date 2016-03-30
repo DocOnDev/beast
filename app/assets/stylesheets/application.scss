@@ -276,10 +276,9 @@
    border-radius: 8px;
  }
 
- .date-nav {
-   text-align: right;
- }
-
+th.nav-button {
+  text-align: right;
+}
  .date-nav .nav-button {
    float: right;
    padding: 5px 0px;
@@ -287,29 +286,55 @@
  }
 
  .nav-button a {
-   font-size: 20px;
-   text-decoration: none;
-   padding: 5px 10px;
-   background: #ccc;
+   text-align: center;
+   vertical-align: middle;
+   height: 30px;
+   width: 30px;
+   padding: 5px;
+   background-color: #eee;
    color: #fff;
-   border: solid 1px #aaa;
-   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+   border-radius: 15px;
+   font-size: 18px;
+
+   &:hover {
+     background-color: #333;
+     color: #093;
+   }
 
    &.disabled {
      opacity: 0.6;
      cursor: not-allowed;
    }
  }
- .nav-button:last-child a {
-     border-radius: 8px 0 0 8px;
+
+td.record-edit {
+  text-align: right;
+}
+ .record-edit a:hover {
+   background-color: transparent;
+   color: #093;
  }
- .nav-button:first-child a {
-     border-radius: 0 8px 8px 0;
+ .record-edit i.fa {
+   text-align: center;
+   vertical-align: middle;
+   height: 30px;
+   width: 30px;
+   padding: 5px;
+   background-color: #093;
+   color: #fff;
+   border-radius: 15px;
+   font-size: 18px;
+
+   &:hover {
+     background-color: #333;
+     color: #093;
+   }
  }
 
  .tooltip {
      position: relative;
  }
+
  .tooltip .tooltiptext {
      visibility: hidden;
      width: 120px;
@@ -345,7 +370,7 @@
 
 .tooltip .tooltiptext {
     opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 0.75s;
 }
 
 .tooltip:hover .tooltiptext {
@@ -439,6 +464,9 @@ td { border-top: 1px solid #ddd; }
 th {
     background-color: #093;
     color: white;
+    height: 50px;
+    font-size: 15px;
+    font-weight: normal;
 }
 
 thead tr:first-child th:first-child {
