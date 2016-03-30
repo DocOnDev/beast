@@ -35,10 +35,12 @@ class EntriesController < ApplicationController
     @entry = Entry.new
     @entry.food_group_id = FoodGroup.find_by(:name => params[:food_group_name]).id if params[:food_group_name]
     @entry.date = params[:entry_date] if params[:entry_date]
+    session[:return_to] = request.referer
   end
 
   # GET /entries/1/edit
   def edit
+    session[:return_to] = request.referer
   end
 
   # POST /entries
@@ -48,7 +50,7 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Entry was successfully created.' }
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new }
@@ -62,7 +64,7 @@ class EntriesController < ApplicationController
   def update
     respond_to do |format|
       if @entry.update(entry_params)
-        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Entry was successfully updated.' }
         format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit }
