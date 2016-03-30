@@ -5,7 +5,23 @@ class EntriesController < ApplicationController
   # GET /entries.json
   def index
     # @entries = Entry.all
-    @entries = Entry.where(:user_id => current_user.id)
+    days_ago = (params[:days_ago] || 0).to_i
+    @entries = for_date_offset(days_ago)
+    @display_date = days_ago.days.ago.strftime("%b %e, %Y")
+
+    @prev_link = view_context.link_to '<i class="fa fa-calendar-minus-o"></i>'.html_safe, entries_path(:days_ago => days_ago + 1)
+    @today_link = view_context.link_to '<i class="fa fa-calendar"></i>'.html_safe, entries_path
+    if (days_ago > 0)
+      @next_link = view_context.link_to '<i class="fa fa-calendar-plus-o"></i>'.html_safe, entries_path(:days_ago => days_ago - 1)
+    else
+      @next_link = view_context.link_to '<i class="fa fa-ban"></i>'.html_safe, entries_path, {:class => "disabled"}
+    end
+
+  end
+
+  def for_date_offset(offset = 0)
+    offset = offset.to_i
+    @entries = Entry.by_day(offset.days.ago).where(:user_id => current_user.id)
   end
 
   # GET /entries/1
