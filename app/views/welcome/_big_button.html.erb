@@ -1,4 +1,10 @@
-<% _cols = columns ? columns : 3 %>
+<%
+if columns
+  _cols = columns
+else
+  columns = 3
+end
+%>
 <div class="col-<%=_cols%> col-m-6">
   <div class="bigbutton">
     <div class="title"><%=title%></div>

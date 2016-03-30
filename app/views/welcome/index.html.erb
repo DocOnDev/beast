@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <div class="row">
     <% current_user.daily_progress.each do |name, values| %>
-      <%= render "big_button", :title => name, :prompt =>"#{values[:consumed]} of #{values[:target]}", :entry_date => Time.zone.now.to_date %>
+      <%= render "big_button", :columns => 3, :title => name, :prompt =>"#{values[:consumed]} of #{values[:target]}", :entry_date => Time.zone.now.to_date %>
     <% end %>
   </div>
 <% else %>
