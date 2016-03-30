@@ -1,10 +1,4 @@
-<%
-if columns
-  _cols = columns
-else
-  columns = 3
-end
-%>
+<% _cols = local_assigns.fetch :columns, 3 %>
 <div class="col-<%=_cols%> col-m-6">
   <div class="bigbutton">
     <div class="title"><%=title%></div>
