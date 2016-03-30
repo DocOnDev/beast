@@ -7,14 +7,22 @@ class ApplicationController < ActionController::Base
 
   around_filter :set_time_zone
 
-  private
 
-  def set_time_zone(&block)
-    time_zone = current_user.try(:time_zone) || 'Central Time (US & Canada)'
-    Time.use_zone(time_zone, &block)
-  end
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  def user_activity
-    current_user.try :touch
-  end
+  protected
+
+    def configure_permitted_parameters
+        devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:time_zone, :first_name, :last_name, :email, :password, :password_confirmation) }
+        devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:time_zone, :first_name, :last_name, :email, :password, :password_confirmation, :current_password) }
+    end
+
+    def set_time_zone(&block)
+      time_zone = current_user.try(:time_zone) || 'Central Time (US & Canada)'
+      Time.use_zone(time_zone, &block)
+    end
+
+    def user_activity
+      current_user.try :touch
+    end
 end
