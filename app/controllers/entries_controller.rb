@@ -10,10 +10,14 @@ class EntriesController < ApplicationController
     @display_date = days_ago.days.ago.strftime("%b %e, %Y")
     @_date = days_ago.days.ago.to_date
 
-    @prev_link = view_context.link_to '<i class="fa fa-calendar-minus-o"></i>'.html_safe, entries_path(:days_ago => days_ago + 1)
-    @today_link = view_context.link_to '<i class="fa fa-calendar"></i>'.html_safe, entries_path
+    @prev_link = view_context.link_to '<span class="tooltiptext">Previous Day</span><i class="fa fa-calendar-minus-o"></i>'.html_safe, entries_path(:days_ago => days_ago + 1)
+    if (days_ago == 0)
+      @today_link = view_context.link_to '<i class="fa fa-ban"></i>'.html_safe, entries_path, {:class => "disabled"}
+    else
+      @today_link = view_context.link_to '<span class="tooltiptext">Today</span><i class="fa fa-calendar-check-o"></i>'.html_safe, entries_path
+    end
     if (days_ago > 0)
-      @next_link = view_context.link_to '<i class="fa fa-calendar-plus-o"></i>'.html_safe, entries_path(:days_ago => days_ago - 1)
+      @next_link = view_context.link_to '<span class="tooltiptext">Next Day</span><i class="fa fa-calendar-plus-o"></i>'.html_safe, entries_path(:days_ago => days_ago - 1)
     else
       @next_link = view_context.link_to '<i class="fa fa-ban"></i>'.html_safe, entries_path, {:class => "disabled"}
     end
