@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-12">
       <div class="bigbutton">
         <div class="title">Graph</div>
@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="row">
     <% current_user.daily_log.each do |name,portion| %>
       <%= render "big_button", :title => name, :value => portion %>

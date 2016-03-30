@@ -6,8 +6,23 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time_zone %><br />
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
   </div>
 
   <div class="field">

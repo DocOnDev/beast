@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   has_many :entries
   has_many :diets
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def recently_active?
    updated_at > 5.minutes.ago
   end

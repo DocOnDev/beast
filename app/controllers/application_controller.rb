@@ -5,7 +5,14 @@ class ApplicationController < ActionController::Base
 
   after_filter :user_activity
 
+  around_filter :set_time_zone
+
   private
+
+  def set_time_zone(&block)
+    time_zone = current_user.try(:time_zone) || 'Central Time (US & Canada)'
+    Time.use_zone(time_zone, &block)
+  end
 
   def user_activity
     current_user.try :touch
