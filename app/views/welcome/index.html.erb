@@ -1,27 +1,7 @@
 <% if user_signed_in? %>
-  <!-- <div class="row">
-    <div class="col-12">
-      <div class="bigbutton">
-        <div class="title">Graph</div>
-        <div class="body">
-          <p>
-            <dl>
-              <% current_user.daily_progress.each do |name, values| %>
-                <dd class="percentage percentage-<%= values[:percent].to_i %>">
-                  <span class="text">
-                    <%= name %>
-                  </span>
-                </dd>
-              <% end %>
-            </dl>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="row">
-    <% current_user.daily_log.each do |name,portion| %>
-      <%= render "big_button", :title => name, :value => portion %>
+    <% current_user.daily_progress.each do |name, values| %>
+      <%= render "big_button", :title => name, :value => values[:remaining] %>
     <% end %>
   </div>
 <% else %>

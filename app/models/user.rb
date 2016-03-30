@@ -31,12 +31,12 @@ class User < ActiveRecord::Base
   def daily_progress
     # Get the allotted daily amounts for each food
     # Get the logged amount
-    # progress_data = {"food_group_name" : {"target" : intake.quantity, "consumed" : daily_log[x]}}
+    # progress_data = {"food_group_name" : {"target" : intake.quantity, "consumed" : daily_log[x]}, ...}
     progress = {}
     active_diet.intakes.each do |intake|
       log = daily_log
       name = intake.food_group.name
-      progress[name] = {:target => intake.quantity + 0.0, :consumed => log[name], :percent => ((log[name] / intake.quantity) * 100).round(2) }
+      progress[name] = {:target => intake.quantity + 0.0, :consumed => log[name], :remaining => (intake.quantity - log[name]), :percent => ((log[name] / intake.quantity) * 100).round(2) }
     end
     progress
   end
