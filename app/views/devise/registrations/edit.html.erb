@@ -52,14 +52,9 @@
       <div class="field">
         <%= f.label :current_password %><br />
         <%= f.password_field :current_password, autocomplete: "off" %>
-      </div>
-      <div class="actions col-6 col-m-6">
         <%= f.submit "Update" %>
       </div>
-      <div class="actions col-6 col-m-6">
-        <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: "delete", class: "caution" %></p>
-      </div>
-
+      <% end %>
     </div>
     <div class="col-6 col-m-6">
       <div class="sub-form">
@@ -71,11 +66,16 @@
           <div class="col-6">
             <%= link_to '<i class="fa fa-cutlery"></i> Food Groups'.html_safe, food_groups_path, {class: "link-button"} %>
           </div>
+          <div class="col-12">
+            <div class="sub-form caution">
+              <div class="title">Cancel Account</div>
+              <div class="body">
+                <%= link_to '<i class="fa fa-exclamation-triangle"></i> Cancel my account'.html_safe, registration_path(resource_name), data: { confirm: "Are you sure?" }, method: "delete", class: "link-button caution" %></p>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
-
-  <div class="row">
-  </div>
-<% end %>
+</div>
 </div>

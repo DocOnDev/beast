@@ -442,7 +442,10 @@ input[type=submit], a.link-button {
     }
 }
 
-input[type=submit].caution:hover {
+.sub-form.caution {
+  background-color: #900;
+}
+input[type=submit].caution:hover, .link-button.caution:hover {
     background-color: #900;
 }
 
