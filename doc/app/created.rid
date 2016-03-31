@@ -1,0 +1,24 @@
+Thu, 31 Mar 2016 16:37:00 -0500
+README.rdoc	Sun, 27 Mar 2016 07:26:51 -0500
+app/controllers/application_controller.rb	Wed, 30 Mar 2016 10:39:27 -0500
+app/controllers/diaries_controller.rb	Thu, 31 Mar 2016 12:55:48 -0500
+app/controllers/diets_controller.rb	Tue, 29 Mar 2016 14:05:15 -0500
+app/controllers/entries_controller.rb	Wed, 30 Mar 2016 16:17:56 -0500
+app/controllers/food_groups_controller.rb	Sun, 27 Mar 2016 08:26:54 -0500
+app/controllers/intakes_controller.rb	Tue, 29 Mar 2016 14:03:07 -0500
+app/controllers/registrations_controller.rb	Wed, 30 Mar 2016 13:13:31 -0500
+app/controllers/users_controller.rb	Sun, 27 Mar 2016 19:35:43 -0500
+app/controllers/welcome_controller.rb	Tue, 29 Mar 2016 10:31:55 -0500
+app/helpers/application_helper.rb	Mon, 28 Mar 2016 18:28:40 -0500
+app/helpers/diaries_helper.rb	Thu, 31 Mar 2016 12:32:30 -0500
+app/helpers/diets_helper.rb	Mon, 28 Mar 2016 14:52:14 -0500
+app/helpers/entries_helper.rb	Sun, 27 Mar 2016 09:44:28 -0500
+app/helpers/food_groups_helper.rb	Sun, 27 Mar 2016 08:26:54 -0500
+app/helpers/users_helper.rb	Sun, 27 Mar 2016 19:33:09 -0500
+app/helpers/welcome_helper.rb	Sun, 27 Mar 2016 07:44:00 -0500
+app/models/diary.rb	Thu, 31 Mar 2016 12:37:08 -0500
+app/models/diet.rb	Wed, 30 Mar 2016 13:09:05 -0500
+app/models/entry.rb	Wed, 30 Mar 2016 14:23:13 -0500
+app/models/food_group.rb	Mon, 28 Mar 2016 16:08:45 -0500
+app/models/intake.rb	Mon, 28 Mar 2016 16:07:24 -0500
+app/models/user.rb	Thu, 31 Mar 2016 12:38:14 -0500
