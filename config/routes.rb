@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :diaries
   resources :diets
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, only: [:index, :show, :edit, :update]

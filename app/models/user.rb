@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :entries
   has_many :diets
+  has_many :diaries
 
   def full_name
     "#{first_name} #{last_name}"
@@ -31,17 +32,17 @@ class User < ActiveRecord::Base
   def daily_progress(_date = Time.zone.now.to_date)
     # Get the allotted daily amounts for each food
     # Get the logged amount
-    # progress_data = {"food_group_name" : {"target" : intake.quantity, "consumed" : daily_log[x]}, ...}
+    # progress_data = {"food_group_name" : {"target" : intake.quantity, "consumed" : daily_food_log[x]}, ...}
     progress = {}
     active_diet.intakes.each do |intake|
-      log = daily_log(_date)
+      log = daily_food_log(_date)
       name = intake.food_group.name
       progress[name] = {:target => intake.quantity + 0.0, :consumed => log[name], :remaining => (intake.quantity - log[name]), :percent => ((log[name] / intake.quantity) * 100).round(2) }
     end
     progress
   end
 
-  def daily_log(_date = Time.zone.now.to_date)
+  def daily_food_log(_date = Time.zone.now.to_date)
     logs = {}
     active_food_groups.each { |fg| logs[fg.name] = 0.0 }
 

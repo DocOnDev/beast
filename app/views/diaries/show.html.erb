@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @diary.date %>
+</p>
+
+<p>
+  <strong>Narrative:</strong>
+  <%= @diary.narrative %>
+</p>
+
+<p>
+  <strong>Sleep score:</strong>
+  <%= @diary.sleep_score %>
+</p>
+
+<p>
+  <strong>Body weight:</strong>
+  <%= @diary.body_weight %>
+</p>
+
+<p>
+  <strong>Step count:</strong>
+  <%= @diary.step_count %>
+</p>
+
+<%= link_to 'Edit', edit_diary_path(@diary) %> |
+<%= link_to 'Back', diaries_path %>
