@@ -32,9 +32,11 @@ class DiariesController < ApplicationController
   def create
     @diary = Diary.new(diary_params)
 
+    redirect_location = session.delete(:diary_return_to) || @diary
+
     respond_to do |format|
       if @diary.save
-        format.html { redirect_to @diary, notice: 'Diary was successfully created.' }
+        format.html { redirect_to redirect_location, notice: 'Diary was successfully created.' }
         format.json { render :show, status: :created, location: @diary }
       else
         format.html { render :new }
@@ -46,9 +48,12 @@ class DiariesController < ApplicationController
   # PATCH/PUT /diaries/1
   # PATCH/PUT /diaries/1.json
   def update
+
+    redirect_location = session.delete(:diary_return_to) || @diary
+
     respond_to do |format|
       if @diary.update(diary_params)
-        format.html { redirect_to @diary, notice: 'Diary was successfully updated.' }
+        format.html { redirect_to redirect_location, notice: 'Diary was successfully updated.' }
         format.json { render :show, status: :ok, location: @diary }
       else
         format.html { render :edit }

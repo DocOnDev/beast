@@ -1,4 +1,5 @@
 <div class="formContainer">
+  <% @diary ||= diary %>
   <%= form_for(@diary) do |f| %>
     <% if @diary.errors.any? %>
       <div id="error_explanation">
@@ -14,25 +15,38 @@
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
 
-    <div class="field">
-      <%= f.label :date %><br>
-      <%= f.date_select :date %>
-    </div>
+    <% if local_assigns[:journal_date] %>
+      <%= f.hidden_field :date, :value => journal_date %>
+    <% else %>
+      <div class="field">
+        <%= f.label :date %><br>
+        <%= f.date_select :date %>
+      </div>
+    <% end %>
+
     <div class="field">
       <%= f.label :narrative %><br>
       <%= f.text_area :narrative %>
     </div>
-    <div class="field">
-      <%= f.label :sleep_score %><br>
-      <%= f.number_field :sleep_score %>
-    </div>
-    <div class="field">
-      <%= f.label :body_weight %><br>
-      <%= f.text_field :body_weight %>
-    </div>
-    <div class="field">
-      <%= f.label :step_count %><br>
-      <%= f.number_field :step_count %>
+    <div class="row">
+      <div class="col-4">
+        <div class="field">
+          <%= f.label :sleep_score %><br>
+          <%= f.number_field :sleep_score %>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="field">
+          <%= f.label :body_weight %><br>
+          <%= f.text_field :body_weight %>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="field">
+          <%= f.label :step_count %><br>
+          <%= f.number_field :step_count %>
+        </div>
+      </div>
     </div>
     <div class="actions">
       <%= f.submit %>

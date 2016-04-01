@@ -1,0 +1,58 @@
+<h1>Journal for <%= @display_date %></h1>
+<div class="row">
+  <div class="col-6">
+    <table>
+      <thead>
+        <tr>
+          <th>Food group</th>
+          <th>Portion</th>
+          <th>Description</th>
+          <th class="nav-button">
+            <div class="tooltip"><%= link_to '<span class="tooltiptext">Previous Day</span><i class="fa fa-calendar-minus-o"></i>'.html_safe, journal_date_path(@_yesterday) %></div>
+          </th>
+          <th class="nav-button">
+            <div class="tooltip"><%= link_to '<span class="tooltiptext">Today</span><i class="fa fa-calendar-check-o"></i>'.html_safe, journals_path %></div>
+          </th>
+          <th class="nav-button">
+            <% if @_tomorrow %>
+              <div class="tooltip"><%= link_to '<span class="tooltiptext">Next Day</span><i class="fa fa-calendar-plus-o"></i>'.html_safe, journal_date_path(@_tomorrow) %></div>
+            <% else %>
+            <div class="tooltip"><%= link_to '<span class="tooltiptext">At Current Day</span><i class="fa fa-ban"></i>'.html_safe, journals_path %></div>
+            <% end %>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @entries.each do |entry| %>
+          <tr>
+            <td><%= entry.food_group.name %></td>
+            <td><%= entry.portion %></td>
+            <td><%= entry.description %></td>
+            <td class="record-edit">
+              <%= link_to '<i class="fa fa-eye"></i>'.html_safe, entry %>
+            </td>
+            <td class="record-edit">
+              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_entry_path(entry) %>
+            </td>
+            <td class="record-edit">
+              <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6">
+    <% current_user.daily_progress(@journal_date).each do |name, values| %>
+      <%= render "welcome/big_button", :columns => 6, :title => name, :prompt =>"#{values[:consumed]} of #{values[:target]}", :entry_date => @journal_date %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <% if @diary %>
+      <%= render partial: 'diaries/form', :locals => {:diary => @diary, :journal_date => @journal_date} %>
+    <% end %>
+  </div>
+</div>
