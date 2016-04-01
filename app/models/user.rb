@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     active_food_groups.each { |fg| logs[fg.name] = 0.0 }
 
     entries.by_day(_date).each do |entry|
-      logs[entry.food_group.name] += entry.portion
+      logs[entry.food_group.name] += (entry.portion || 0 )
     end
     logs
   end
