@@ -53,3 +53,6 @@ end
 
 # Heroku integration
 gem 'rails_12factor', group: :production
+
+# handle unit conversions
+gem 'ruby-measurement'
