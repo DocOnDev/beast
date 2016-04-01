@@ -23,18 +23,7 @@
           <th>Food group</th>
           <th>Portion</th>
           <th>Description</th>
-          <th class="nav-button">
-            <div class="tooltip"><%= link_to '<span class="tooltiptext">Previous Day</span><i class="fa fa-calendar-minus-o"></i>'.html_safe, journal_date_path(@_yesterday) %></div>
-          </th>
-          <th class="nav-button">
-            <div class="tooltip"><%= link_to '<span class="tooltiptext">Today</span><i class="fa fa-calendar-check-o"></i>'.html_safe, journals_path %></div>
-          </th>
-          <th class="nav-button">
-            <% if @_tomorrow %>
-              <div class="tooltip"><%= link_to '<span class="tooltiptext">Next Day</span><i class="fa fa-calendar-plus-o"></i>'.html_safe, journal_date_path(@_tomorrow) %></div>
-            <% else %>
-            <div class="tooltip"><%= link_to '<span class="tooltiptext">At Current Day</span><i class="fa fa-ban"></i>'.html_safe, journals_path %></div>
-            <% end %>
+          <th colspan="3">
           </th>
         </tr>
       </thead>
