@@ -231,6 +231,8 @@
    background-color: #ccc;
    border-radius: 0px 0px 12px 12px;
    min-height: 50px;
+   z-index: 1000;
+   position: relative;
  }
 
  .bigbutton, .sub-form {
@@ -276,6 +278,9 @@
    border-radius: 8px;
  }
 
+ .title-nav .nav-button { padding: 12px 4px 0px 4px; }
+ .title-nav h1, .title-nav .nav-button { float: left; }
+
 th.nav-button {
   text-align: right;
 }
@@ -291,7 +296,7 @@ th.nav-button {
    height: 30px;
    width: 30px;
    padding: 5px;
-   background-color: #eee;
+   background-color: #093;
    color: #fff;
    border-radius: 15px;
    font-size: 18px;
@@ -299,6 +304,10 @@ th.nav-button {
    &:hover {
      background-color: #333;
      color: #093;
+   }
+
+   &:visited {
+     color: #eee;
    }
 
    &.disabled {
