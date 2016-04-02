@@ -4,23 +4,25 @@ class JournalsController < ApplicationController
   # GET /journals
   # GET /journals.json
   def index
-    @journal_date = params[:year] ? Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i) : Date.today
-    yesterday = @journal_date -1
-    tomorrow = @journal_date +1
-    @_yesterday = {:year => yesterday.year, :month => yesterday.month, :day => yesterday.day}
-    @_tomorrow = {:year => tomorrow.year, :month => tomorrow.month, :day => tomorrow.day} unless tomorrow > Time.zone.now.beginning_of_day
-    @display_date = @journal_date.to_formatted_s(:long)
+    if current_user
+      @journal_date = params[:year] ? Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i) : Date.today
+      yesterday = @journal_date -1
+      tomorrow = @journal_date +1
+      @_yesterday = {:year => yesterday.year, :month => yesterday.month, :day => yesterday.day}
+      @_tomorrow = {:year => tomorrow.year, :month => tomorrow.month, :day => tomorrow.day} unless tomorrow > Time.zone.now.beginning_of_day
+      @display_date = @journal_date.to_formatted_s(:long)
 
-    # Multiple log entries per user per day
-    @entries = Entry.by_day(@journal_date).where(:user_id => current_user.id)
-    # One diary per user per day
-    @diary = Diary.by_day(@journal_date).where(:user_id => current_user.id).first
-    if !@diary && (@journal_date <= Time.zone.now.beginning_of_day)
-      @diary = Diary.new
-      @diary.date = @journal_date
+      # Multiple log entries per user per day
+      @entries = Entry.by_day(@journal_date).where(:user_id => current_user.id)
+      # One diary per user per day
+      @diary = Diary.by_day(@journal_date).where(:user_id => current_user.id).first
+      if !@diary && (@journal_date <= Time.zone.now.beginning_of_day)
+        @diary = Diary.new
+        @diary.date = @journal_date
+      end
+
+      session[:diary_return_to] = request.url
     end
-
-    session[:diary_return_to] = request.url
 
   end
 

@@ -41,7 +41,7 @@
   </div>
   <div class="col-6">
     <% current_user.daily_progress(@_date).each do |name, values| %>
-      <%= render "welcome/big_button", :columns => 6, :title => name, :prompt =>"#{values[:consumed]} of #{values[:target]}", :entry_date => @_date %>
+      <%= render "big_button", :columns => 6, :title => name, :prompt =>"#{values[:consumed]} of #{values[:target]}", :entry_date => @_date %>
     <% end %>
   </div>
 </div>
