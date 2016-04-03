@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :recipes
   resources :diaries
   resources :diets
   devise_for :users, :controllers => { registrations: 'registrations' }
