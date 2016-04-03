@@ -567,3 +567,20 @@ label {
 .year { width: 29%; }
 .month { width: 49% }
 .day { width: 20% }
+
+#nv-list {
+  padding: 0;
+  margin: 0;
+}
+#nv-list label {
+  display: inline-block;
+  width:48%;
+  padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+#nv-list input[type=text] {
+  width: 49%;
+}

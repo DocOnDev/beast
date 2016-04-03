@@ -1,37 +1,54 @@
-<%= form_for(@recipe) do |f| %>
-  <% if @recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+<div class="formContainer">
+  <%= form_for(@recipe) do |f| %>
+    <% if @recipe.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
 
-      <ul>
-      <% @recipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    
+    <div class="row">
+      <div class="col-6">
+        <div class="field">
+          <%= f.label :description %><br>
+          <%= f.text_area :description %>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="field">
+          <%= f.label :web_page %><br>
+          <%= f.text_field :web_page %>
+        </div>
+        <div class="field">
+          <%= f.label :serving %><br>
+          <%= f.text_field :quantity, {:style => 'width: 49%'} %>
+          <%= f.text_field :unit, {:style => 'width: 49%'} %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <h2>Nutritional Values</h2>
+      <div class="row">
+        <%= f.fields_for :nutritional_values do |value| %>
+          <%= render "nutritional_values", :ff => value %>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :web_page %><br>
-    <%= f.text_field :web_page %>
-  </div>
-  <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.text_field :quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :unit %><br>
-    <%= f.text_field :unit %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
