@@ -74,6 +74,12 @@ class RecipesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
+      if @recipe.quantity && @recipe.unit
+        user_measurement = "#{@recipe.quantity} #{@recipe.unit}"
+        measurement = Measurement.parse(user_measurement)
+        @recipe.quantity = measurement.quantity
+        @recipe.unit = measurement.unit
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
