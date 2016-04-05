@@ -29,22 +29,26 @@
 
   <tbody>
     <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.name %></td>
-        <td><%= recipe.description %></td>
-        <td><%= recipe.web_page %></td>
-        <td><%= recipe.quantity %></td>
-        <td><%= recipe.unit %></td>
-        <td class="record-edit">
+      <tr class="recipe">
+        <td class="name"><%= recipe.name %></td>
+        <td class="description"><%= recipe.description %></td>
+        <td class="url round-button">
+          <% if !recipe.web_page.empty? %>
+            <%= link_to('<i class="fa fa-link"></i>'.html_safe, recipe.web_page) %>
+          <% end %>
+        </td>
+        <td class="quantity"><%= recipe.quantity %></td>
+        <td class="unit"><%= recipe.unit %></td>
+        <td class="round-button">
           <%= link_to '<i class="fa fa-book"></i>'.html_safe, log_recipe_path(recipe) %>
         </td>
-        <td class="record-edit">
+        <td class="round-button">
           <%= link_to '<i class="fa fa-eye"></i>'.html_safe, recipe %>
         </td>
-        <td class="record-edit">
+        <td class="round-button">
           <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_recipe_path(recipe) %>
         </td>
-        <td class="record-edit">
+        <td class="round-button">
           <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>

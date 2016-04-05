@@ -25,13 +25,13 @@
             <td><%= entry.food_group.name %></td>
             <td><%= number_with_precision(entry.portion, :precision =>2) %></td>
             <td><%= entry.description %></td>
-            <td class="record-edit">
+            <td class="round-button">
               <%= link_to '<i class="fa fa-eye"></i>'.html_safe, entry %>
             </td>
-            <td class="record-edit">
+            <td class="round-button">
               <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_entry_path(entry) %>
             </td>
-            <td class="record-edit">
+            <td class="round-button">
               <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, entry, method: :delete, data: { confirm: 'Are you sure?' } %>
             </td>
           </tr>

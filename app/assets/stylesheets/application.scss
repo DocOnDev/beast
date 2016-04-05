@@ -325,14 +325,28 @@ th.nav-button {
    }
  }
 
-td.record-edit {
+tr.recipe td {
+  vertical-align: top;
+}
+
+tr.recipe td.url { text-align: center; }
+tr.recipe td.description {
+  display: inline-block;
+  max-width: 300px;
+  max-height: 100px;
+  overflow: hidden;
+  // white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+td.round-button {
   text-align: right;
 }
- .record-edit a:hover {
+ .round-button a:hover {
    background-color: transparent;
    color: #093;
  }
- .record-edit i.fa {
+ .round-button i.fa {
    text-align: center;
    vertical-align: middle;
    height: 30px;
