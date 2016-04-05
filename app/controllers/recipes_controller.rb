@@ -130,4 +130,5 @@ class RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:name, :description, :web_page, :quantity, :unit, nutritional_values_attributes: [:id, :recipe_id, :food_group_id, :quantity])
     end
+
 end

@@ -2,7 +2,7 @@ class Recipe < ActiveRecord::Base
   has_many :nutritional_values
   has_many :food_groups, :through => :nutritional_values
 
-  before_save :mark_nv_for_removal
+  before_save :mark_nv_for_removal, :check_url
 
 def mark_nv_for_removal
   nutritional_values.each do |nv|
@@ -24,6 +24,12 @@ end
         true
       end
     end
+  end
+
+  def check_url
+    if self.web_page && !self.web_page.empty?
+        self.web_page = /^http/i.match(self.web_page) ? self.web_page : "http://#{self.web_page}"
+      end
   end
 
 end

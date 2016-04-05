@@ -31,7 +31,9 @@
     <% @recipes.each do |recipe| %>
       <tr class="recipe">
         <td class="name"><%= highlight(recipe.name, params[:search]) %></td>
-        <td class="description"><%= highlight(excerpt(recipe.description, params[:search]), params[:search]) %></td>
+        <td class="description">
+            <%= (params[:search] && !params[:search].empty?) ? highlight(excerpt(recipe.description, params[:search]), params[:search]) : recipe.description %>
+        </td>
         <td class="url round-button">
           <% if !recipe.web_page.empty? %>
             <%= link_to('<i class="fa fa-link"></i>'.html_safe, recipe.web_page) %>
