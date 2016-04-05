@@ -7,13 +7,11 @@ class Recipe < ActiveRecord::Base
 def mark_nv_for_removal
   nutritional_values.each do |nv|
     nv.mark_for_destruction if nv.quantity.blank?
-    p "Marked #{nv.id} for destruction"
   end
 end
 
 def self.search(search)
   where("lower(name) LIKE ? OR lower(description) LIKE ?", "%#{search.downcase}%", "%#{search.downcase}%")
-  # where("description LIKE ?", "%#{search}%")
 end
 
   accepts_nested_attributes_for :nutritional_values, allow_destroy: true, :reject_if => :reject_nv
