@@ -1,5 +1,5 @@
 <div class="row">
-  <h1>Diary for <%= @display_date %></h1>
+  <h1>Diary for <%= @_date.strftime("%b %e, %Y") %></h1>
   <div class="col-6">
     <table>
       <thead>
@@ -23,7 +23,7 @@
         <% @entries.each do |entry| %>
           <tr>
             <td><%= entry.food_group.name %></td>
-            <td><%= entry.portion %></td>
+            <td><%= number_with_precision(entry.portion, :precision =>2) %></td>
             <td><%= entry.description %></td>
             <td class="record-edit">
               <%= link_to '<i class="fa fa-eye"></i>'.html_safe, entry %>
@@ -41,7 +41,7 @@
   </div>
   <div class="col-6">
     <% current_user.daily_progress(@_date).each do |name, values| %>
-      <%= render "big_button", :columns => 6, :title => name, :prompt =>"#{values[:consumed]} of #{values[:target]}", :entry_date => @_date %>
+      <%= render "big_button", :columns => 6, :title => name, :prompt =>"#{number_with_precision(values[:consumed], :precision =>2)} of #{number_with_precision(values[:target], :precision =>2)}", :entry_date => @_date %>
     <% end %>
   </div>
 </div>
