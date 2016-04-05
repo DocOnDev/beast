@@ -11,6 +11,11 @@ def mark_nv_for_removal
   end
 end
 
+def self.search(search)
+  where("lower(name) LIKE ? OR lower(description) LIKE ?", "%#{search.downcase}%", "%#{search.downcase}%")
+  # where("description LIKE ?", "%#{search}%")
+end
+
   accepts_nested_attributes_for :nutritional_values, allow_destroy: true, :reject_if => :reject_nv
 
   def reject_nv(attributes)

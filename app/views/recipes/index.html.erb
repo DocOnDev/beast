@@ -1,4 +1,19 @@
-<h1>Listing Recipes</h1>
+<h1>Recipes</h1>
+
+<div class="row">
+<%= form_tag(recipes_path, :method => "get", id: "search-form") do %>
+  <div class="col-7">
+    <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+  </div>
+  <div class="col-5">
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
+</div>
+
+<% if !(@recipes.present?) %>
+  <p>There are no recipes containing the term(s) <%= params[:search] %>.</p>
+<% end %>
 
 <table>
   <thead>
