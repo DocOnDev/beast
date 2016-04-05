@@ -30,6 +30,42 @@ class RecipesController < ApplicationController
     }
   end
 
+  # GET /recipes/1/log
+  def log
+    set_recipe
+  end
+
+  # POST /recipes/1/updatelog
+  def updatelog
+    set_recipe
+    #TODO: Add records to the entries table for converted quantity of recipe components
+
+    respond_to do |format|
+      log_unit = params[:log][:unit]
+
+      log_measure = Measurement.parse("#{params[:log][:quantity]} #{log_unit}")
+      recipe_measure = Measurement.parse("#{@recipe.quantity} #{@recipe.unit}")
+      multiplier = (log_measure / recipe_measure).convert_to(log_unit).quantity
+
+      entry_details = {}
+      @recipe.nutritional_values.each do |nv|
+        new_qty = nv.quantity * multiplier
+        _date = Date.new(params[:logdate][:year].to_i,params[:logdate][:month].to_i,params[:logdate][:day].to_i)
+        entry_details[nv.food_group.name] = {:portion => new_qty, :food_group_id => nv.food_group.id, :description => @recipe.name, :date => _date, :user_id => current_user.id}
+      end
+
+      ActiveRecord::Base.transaction do
+        entry_details.each do |name, values|
+          e = Entry.create!(values)
+          e.save
+        end
+      end
+
+      response_message = "Recipe #{@recipe.name} was recorded for #{params[:log][:quantity]} #{params[:log][:unit]}."
+      format.html { redirect_to recipes_url, notice: response_message }
+    end
+  end
+
   # POST /recipes
   # POST /recipes.json
   def create
@@ -79,6 +115,10 @@ class RecipesController < ApplicationController
         measurement = Measurement.parse(user_measurement)
         @recipe.quantity = measurement.quantity
         @recipe.unit = measurement.unit
+        @conversions = [measurement.unit.to_s.gsub(/\./,'')]
+        Measurement::Unit[measurement.unit].conversions.each { |cv|
+          @conversions << cv
+        }
       end
     end
 

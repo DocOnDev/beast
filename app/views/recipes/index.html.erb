@@ -21,7 +21,7 @@
         <td><%= recipe.quantity %></td>
         <td><%= recipe.unit %></td>
         <td class="record-edit">
-          <%= link_to '<i class="fa fa-book"></i>'.html_safe, recipe %>
+          <%= link_to '<i class="fa fa-book"></i>'.html_safe, log_recipe_path(recipe) %>
         </td>
         <td class="record-edit">
           <%= link_to '<i class="fa fa-eye"></i>'.html_safe, recipe %>

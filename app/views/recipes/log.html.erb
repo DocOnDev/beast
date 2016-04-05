@@ -1,0 +1,26 @@
+<h1>Consumed <%= @recipe.name %></h1>
+<div class="formContainer">
+  <%= form_for(@recipe, url: {action: "updatelog"}) do |f| %>
+    <div class="row">
+      <div class="col-2 col-m-6">
+        <label>Amount</label><br />
+        <%= text_field(:log, :quantity) %>
+      </div>
+      <div class="col-2 col-m-6">
+        <br />
+        <%=
+          select("log", "unit", @conversions.collect {|name, value| [name, name]})
+        %>
+      </div>
+      <div class="col-8">
+        <label>Date</label><br />
+        <%= select_date Date.today, prefix: 'logdate', :with_css_classes => true %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "Log Recipe" %>
+    </div>
+
+  <% end %>
+</div>

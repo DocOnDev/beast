@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   resources :recipes
+
+  resources :recipes do
+    member do
+      get 'log'
+      patch 'updatelog'
+    end
+  end
+
   resources :diaries
   resources :diets
   devise_for :users, :controllers => { registrations: 'registrations' }
