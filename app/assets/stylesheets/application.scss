@@ -135,7 +135,7 @@
  }
 
  .header {
-    background-color: #093;
+    background-color: #696;
     color: #fff;
     padding: 15px;
     border-radius: 12px 12px 0px 0px;
@@ -206,7 +206,7 @@
 
  /*Hover state for dropdown links*/
  .menu li:hover ul a:hover {
- 	background: #093;
+ 	background: #696;
  	color: #fff;
  }
  /*Hide dropdown links until they are needed*/
@@ -246,7 +246,7 @@
 
  .bigbutton, .sub-form {
    padding: 10px;
-   background-color: #093;
+   background-color: #696;
    border-radius: 12px;
  }
 
@@ -305,14 +305,14 @@ th.nav-button {
    height: 30px;
    width: 30px;
    padding: 5px;
-   background-color: #093;
+   background-color: #696;
    color: #fff;
    border-radius: 15px;
    font-size: 18px;
 
    &:hover {
      background-color: #333;
-     color: #093;
+     color: #696;
    }
 
    &:visited {
@@ -344,7 +344,7 @@ td.round-button {
 }
  .round-button a:hover {
    background-color: transparent;
-   color: #093;
+   color: #696;
  }
  .round-button i.fa {
    text-align: center;
@@ -352,14 +352,14 @@ td.round-button {
    height: 30px;
    width: 30px;
    padding: 5px;
-   background-color: #093;
+   background-color: #696;
    color: #fff;
    border-radius: 15px;
    font-size: 18px;
 
    &:hover {
      background-color: #333;
-     color: #093;
+     color: #696;
    }
  }
 
@@ -491,10 +491,10 @@ th, td {
     padding: 8px;
 }
 
-td { border-top: 1px solid #ddd; }
+td { border-top: 1px solid #D2D9D2; }
 
 th {
-    background-color: #093;
+    background-color: #696;
     color: white;
     height: 50px;
     font-size: 15px;
@@ -514,7 +514,7 @@ tbody tr:last-child td:last-child {
     border-radius: 0 0 12px 0;
 }
 
-tr {background-color: #ddd}
+tr {background-color: #D2D9D2}
 tr:nth-child(even){background-color: #eee}
 
 input[type=text], input[type=number], input[type=email], input[type=password], select {
@@ -546,7 +546,7 @@ input[type=submit], a.link-button {
 
 
     &:hover {
-      background-color: #093;
+      background-color: #696;
     }
 }
 
