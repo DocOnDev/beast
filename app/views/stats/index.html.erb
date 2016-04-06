@@ -69,7 +69,7 @@ $(function () {
         },
         series: [{
             name: 'Target',
-            color: 'rgba(0,153,51,1)',
+            color: 'rgba(102,153,102,1)',
             data: [
               <% diet = Diet.find_by(:user_id => current_user.id) %>
               <% FoodGroup.all.each do |fg| %>
