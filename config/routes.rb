@@ -13,12 +13,18 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, only: [:index, :show, :edit, :update]
   resources :entries
-  resources :journals
+  resources :journals, only: [:index]
+  resources :stats, only: [:index]
   resources :food_groups
 
     get "journals/:year/:month/:day" => "journals#index",
       :constraints => { :month => /\d{1,2}/, :day => /\d{1,2}/, :year => /\d{4}/ },
       :as => "journal_date"
+
+
+    get "stats/:year/:month/:day" => "stats#index",
+      :constraints => { :month => /\d{1,2}/, :day => /\d{1,2}/, :year => /\d{4}/ },
+      :as => "stat_date"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

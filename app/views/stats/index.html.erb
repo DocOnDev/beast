@@ -1,0 +1,91 @@
+<h1>User Statistics</h1>
+
+<div class="row title-nav">
+    <h1><%= @display_date %></h1>
+    <div class="nav-button">
+      <span class="tooltip"><%= link_to '<span class="tooltiptext">Previous Day</span><i class="fa fa-calendar-minus-o"></i>'.html_safe, stat_date_path(@_yesterday) %></span>
+    </div>
+    <div class="nav-button">
+      <span class="tooltip"><%= link_to '<span class="tooltiptext">Today</span><i class="fa fa-calendar-check-o"></i>'.html_safe, stats_path %></span>
+    </div>
+    <div class="nav-button">
+      <% if @_tomorrow %>
+        <div class="tooltip"><%= link_to '<span class="tooltiptext">Next Day</span><i class="fa fa-calendar-plus-o"></i>'.html_safe, stat_date_path(@_tomorrow) %></div>
+      <% else %>
+        <div class="tooltip"><%= link_to '<span class="tooltiptext">At Current Day</span><i class="fa fa-ban"></i>'.html_safe, stats_path %></div>
+      <% end %>
+    </div>
+</div>
+
+<div class="col-6" id="user_stats" style="width: 560px; height: 300px;"></div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    new Highcharts.Chart({
+      chart: { renderTo: 'user_stats' },
+      title: { text: 'Intakes Prior Week' },
+      xAxis: { type: 'datetime' },
+      yAxis: {
+      title: { text: 'Portions'}
+    },
+    series: [
+      <% FoodGroup.all.each do |fg| %>
+        {
+          name: "<%= fg.name %>",
+          pointInterval: <%= 1.day * 1000 %>,
+          pointStart: <%= @stats_date.weeks_ago(1).at_midnight.to_i * 1000 %>,
+          data: <%= (@stats_date.weeks_ago(1)..@stats_date).map { |date| Entry.by_day(date).where(food_group_id: fg.id).sum(:portion).to_f}.inspect %>
+        },
+      <% end %>]
+    });
+  });
+</script>
+
+<div class="col-6" id="comparison" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+<script type="text/javascript" charset="utf-8">
+$(function () {
+    $('#comparison').highcharts({
+        chart: { type: 'column' },
+        title: { text: 'Intake Progress for <%= @stats_date %>' },
+        xAxis: {
+            categories: [
+              <% FoodGroup.all.each do |fg| %>
+                '<%= fg.name %>',
+              <% end %>
+            ]
+        },
+        yAxis: [{ min: 0, title: { text: 'Portions' } }],
+        legend: { shadow: false },
+        tooltip: { shared: true },
+        plotOptions: {
+            column: {
+                grouping: false,
+                shadow: false,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Target',
+            color: 'rgba(165,170,217,1)',
+            data: [
+              <% diet = Diet.find_by(:user_id => current_user.id) %>
+              <% FoodGroup.all.each do |fg| %>
+                <%= diet.intakes.find_by(:food_group_id => fg.id).quantity %>,
+              <% end %>
+            ],
+            pointPadding: 0.3,
+            pointPlacement: -0.2
+        }, {
+            name: 'Progress',
+            color: 'rgba(126,86,134,.9)',
+            data: [
+              <% FoodGroup.all.each do |fg| %>
+                <%= Entry.by_day(@stats_date).where(food_group_id: fg.id).sum(:portion).to_f %>,
+              <% end %>
+            ],
+            pointPadding: 0.4,
+            pointPlacement: -0.2
+        }]
+    });
+});
+</script>
