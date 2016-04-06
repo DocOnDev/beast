@@ -34,7 +34,7 @@
           name: "<%= fg.name %>",
           pointInterval: <%= 1.day * 1000 %>,
           pointStart: <%= @stats_date.weeks_ago(1).at_midnight.to_i * 1000 %>,
-          data: <%= (@stats_date.weeks_ago(1)..@stats_date).map { |date| Entry.by_day(date).where(food_group_id: fg.id).sum(:portion).to_f}.inspect %>
+          data: <%= (@stats_date.weeks_ago(1)..@stats_date).map { |date| Entry.by_day(date).where(food_group_id: fg.id).where(user_id: current_user.id).sum(:portion).to_f}.inspect %>
         },
       <% end %>]
     });
@@ -80,7 +80,7 @@ $(function () {
             color: 'rgba(126,86,134,.9)',
             data: [
               <% FoodGroup.all.each do |fg| %>
-                <%= Entry.by_day(@stats_date).where(food_group_id: fg.id).sum(:portion).to_f %>,
+                <%= Entry.by_day(@stats_date).where(food_group_id: fg.id).where(user_id: current_user.id).sum(:portion).to_f %>,
               <% end %>
             ],
             pointPadding: 0.4,
