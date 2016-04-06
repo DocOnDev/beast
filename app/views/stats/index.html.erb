@@ -1,7 +1,5 @@
-<h1>User Statistics</h1>
-
 <div class="row title-nav">
-    <h1><%= @display_date %></h1>
+    <h1><%= @stats_date.strftime("%d %b %Y") %></h1>
     <div class="nav-button">
       <span class="tooltip"><%= link_to '<span class="tooltiptext">Previous Day</span><i class="fa fa-calendar-minus-o"></i>'.html_safe, stat_date_path(@_yesterday) %></span>
     </div>

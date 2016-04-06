@@ -8,7 +8,6 @@ class StatsController < ApplicationController
       tomorrow = @stats_date +1
       @_yesterday = {:year => yesterday.year, :month => yesterday.month, :day => yesterday.day}
       @_tomorrow = {:year => tomorrow.year, :month => tomorrow.month, :day => tomorrow.day} unless tomorrow > Time.zone.now.beginning_of_day
-      @display_date = @stats_date.to_formatted_s(:rfc822)
     end
   end
 

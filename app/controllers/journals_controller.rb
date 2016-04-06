@@ -10,7 +10,6 @@ class JournalsController < ApplicationController
       tomorrow = @journal_date +1
       @_yesterday = {:year => yesterday.year, :month => yesterday.month, :day => yesterday.day}
       @_tomorrow = {:year => tomorrow.year, :month => tomorrow.month, :day => tomorrow.day} unless tomorrow > Time.zone.now.beginning_of_day
-      @display_date = @journal_date.to_formatted_s(:rfc822)
 
       # Multiple log entries per user per day
       @entries = Entry.by_day(@journal_date).where(:user_id => current_user.id)
