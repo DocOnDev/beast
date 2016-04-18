@@ -1,5 +1,8 @@
 == README
 
+{<img src="https://codeclimate.com/github/DocOnDev/beast/badges/gpa.svg" />}[https://codeclimate.com/github/DocOnDev/beast]
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
