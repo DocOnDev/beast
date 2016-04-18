@@ -88,4 +88,4 @@ exclude_paths:
 - db/
 - test/
 - vendor/
-- "doc/"
+- doc/**/*
