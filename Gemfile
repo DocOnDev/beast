@@ -41,6 +41,7 @@ gem 'font-awesome-sass'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec'
 end
 
 group :development do
@@ -56,3 +57,6 @@ gem 'rails_12factor', group: :production
 
 # handle unit conversions
 gem 'ruby-measurement'
+
+# Code Climate
+gem "codeclimate-test-reporter", group: :test, require: nil
