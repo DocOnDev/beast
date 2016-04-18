@@ -2,3 +2,6 @@ language: ruby
 rvm:
   - 2.2.1
 script: bundle exec rspec --tag ~integration
+addons:
+    code_climate:
+        repo_token: 624173816fd8e77312a169ea5ee7d904ea844382b8182147def2eeac9f0160b1
