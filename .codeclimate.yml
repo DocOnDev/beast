@@ -89,3 +89,4 @@ exclude_paths:
 - test/
 - vendor/
 - doc/**/*
+- "doc/app/js/jquery.js"
