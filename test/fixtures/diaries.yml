@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date: 2016-04-15
+  date: <%= Date.today %>
   narrative: MyText
   sleep_score: 86
   body_weight: 183.5
