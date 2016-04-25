@@ -11,12 +11,12 @@ two:
   food_group: protein
   user: michael
   date: 2016-03-27
-  portion: 9.99
+  portion: 29.99
   description: MyString
 
 three:
   food_group: vegetable
   user: doc
   date: <%= Date.today %>
-  portion: 9.99
+  portion: 19.99
   description: MyString
