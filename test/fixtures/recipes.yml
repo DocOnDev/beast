@@ -13,3 +13,17 @@ two:
   web_page: http://www.wearecto2.com/
   quantity: 1.25
   unit: cup
+
+meatloaf:
+  name: Meatloaf
+  description: A loaf of meat like mama used to make.
+  web_page: http://www.wearecto2.com/
+  quantity: 1.25
+  unit: oz
+
+soup:
+  name: Soup
+  description: Vegetable beef soup
+  web_page: http://www.wearecto2.com/
+  quantity: 1.00
+  unit: cup
