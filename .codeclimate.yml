@@ -88,5 +88,7 @@ exclude_paths:
 - db/
 - test/
 - vendor/
-- doc/**/*
+- "doc/**/*"
 - "doc/app/js/jquery.js"
+- "doc/app/js/searcher.js"
+- "doc/app/js/navigation.js"
