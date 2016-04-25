@@ -3,6 +3,7 @@ require 'test_helper'
 class EntriesControllerTest < ActionController::TestCase
   setup do
     @entry = entries(:one)
+    sign_in User.first
   end
 
   test "should get index" do
@@ -18,10 +19,11 @@ class EntriesControllerTest < ActionController::TestCase
 
   test "should create entry" do
     assert_difference('Entry.count') do
+      session[:return_to] = recipes_url
       post :create, entry: { date: @entry.date, description: @entry.description, food_group_id: @entry.food_group_id, portion: @entry.portion, username: @entry.username }
     end
 
-    assert_redirected_to entry_path(assigns(:entry))
+    assert_redirected_to recipes_url
   end
 
   test "should show entry" do
@@ -35,6 +37,7 @@ class EntriesControllerTest < ActionController::TestCase
   end
 
   test "should update entry" do
+    session[:return_to] = entry_path(@entry.id)
     patch :update, id: @entry, entry: { date: @entry.date, description: @entry.description, food_group_id: @entry.food_group_id, portion: @entry.portion, username: @entry.username }
     assert_redirected_to entry_path(assigns(:entry))
   end

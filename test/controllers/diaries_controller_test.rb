@@ -3,6 +3,7 @@ require 'test_helper'
 class DiariesControllerTest < ActionController::TestCase
   setup do
     @diary = diaries(:one)
+    sign_in User.first
   end
 
   test "should get index" do

@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
-  web_page: MyString
-  quantity: 9.99
-  unit: MyString
+  name: RecipeOne
+  description: RecipeOne Description
+  web_page: http://www.docondev.com/
+  quantity: 2.0
+  unit: count
 
 two:
-  name: MyString
-  description: MyText
-  web_page: MyString
-  quantity: 9.99
-  unit: MyString
+  name: RecipeTwo
+  description: Another Description
+  web_page: http://www.wearecto2.com/
+  quantity: 1.25
+  unit: cup

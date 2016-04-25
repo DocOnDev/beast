@@ -1,11 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  diet_id: 1
-  food_group_id: 1
+  diet: one
+  food_group: protein
   quantity: 1
 
 two:
-  diet_id: 1
-  food_group_id: 1
-  quantity: 1
+  diet: two
+  food_group: vegetable
+  quantity: 2
+
+three:
+  diet: three
+  food_group: vegetable
+  quantity: 2
+
+four:
+  diet: two
+  food_group: protein
+  quantity: 2
+
+five:
+  diet: one
+  food_group: vegetable
+  quantity: 2

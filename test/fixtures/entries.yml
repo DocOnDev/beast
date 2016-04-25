@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  food_group_id: 
-  username: MyString
-  date: 2016-03-27
+  food_group: protein
+  user: michael
+  date: <%= Date.today %>
   portion: 9.99
   description: MyString
 
 two:
-  food_group_id: 
-  username: MyString
+  food_group: protein
+  user: michael
   date: 2016-03-27
+  portion: 9.99
+  description: MyString
+
+three:
+  food_group: vegetable
+  user: doc
+  date: <%= Date.today %>
   portion: 9.99
   description: MyString

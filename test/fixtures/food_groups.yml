@@ -1,11 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyText
-  calories: 1
+protein:
+  name: ProteinTest
+  description: You know, protein
+  calories: 100
 
-two:
-  name: MyString
-  description: MyText
-  calories: 1
+vegetable:
+  name: FoodGroup2
+  description: Another food group
+  calories: 10
+
+unassigned:
+  name: Unassigned
+  description: This food group is for testing a delete
+  calories: 100

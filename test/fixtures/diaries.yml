@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date: 2016-03-31
+  date: 2016-04-15
   narrative: MyText
-  sleep_score: 1
-  body_weight: 1.5
-  step_count: 1
+  sleep_score: 86
+  body_weight: 183.5
+  step_count: 8523
 
 two:
-  date: 2016-03-31
+  date: 2016-03-21
   narrative: MyText
-  sleep_score: 1
-  body_weight: 1.5
-  step_count: 1
+  sleep_score: 91
+  body_weight: 184.5
+  step_count: 10109
+
+three:
+  date: 2016-04-24
+  narrative: MyText
+  sleep_score: 89
+  body_weight: 184.1
+  step_count: 8255

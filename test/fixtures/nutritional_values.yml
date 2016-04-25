@@ -9,3 +9,13 @@ two:
   recipe_id: 1
   food_group_id: 1
   quantity: 9.99
+
+three:
+  recipe_id: 2
+  food_group_id: 2
+  quantity: 9.99
+
+four:
+  recipe_id: 2
+  food_group_id: 2
+  quantity: 9.99

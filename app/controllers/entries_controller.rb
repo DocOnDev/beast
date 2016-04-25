@@ -38,12 +38,12 @@ class EntriesController < ApplicationController
     @entry = Entry.new
     @entry.food_group_id = FoodGroup.find_by(:name => params[:food_group_name]).id if params[:food_group_name]
     @entry.date = params[:entry_date] if params[:entry_date]
-    session[:return_to] = request.referer
+    session[:return_to] = request.referer ? request.referer : entries_url
   end
 
   # GET /entries/1/edit
   def edit
-    session[:return_to] = request.referer
+    session[:return_to] = request.referer ? request.referer : entry_path(params[:id])
   end
 
   # POST /entries

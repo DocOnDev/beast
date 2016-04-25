@@ -21,7 +21,7 @@ class RecipesControllerTest < ActionController::TestCase
       post :create, recipe: { description: @recipe.description, name: @recipe.name, quantity: @recipe.quantity, unit: @recipe.unit, web_page: @recipe.web_page }
     end
 
-    assert_redirected_to recipe_path(assigns(:recipe))
+    assert_redirected_to recipes_path()
   end
 
   test "should show recipe" do
@@ -36,7 +36,7 @@ class RecipesControllerTest < ActionController::TestCase
 
   test "should update recipe" do
     patch :update, id: @recipe, recipe: { description: @recipe.description, name: @recipe.name, quantity: @recipe.quantity, unit: @recipe.unit, web_page: @recipe.web_page }
-    assert_redirected_to recipe_path(assigns(:recipe))
+    assert_redirected_to recipes_path()
   end
 
   test "should destroy recipe" do

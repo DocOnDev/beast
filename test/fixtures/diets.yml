@@ -2,12 +2,18 @@
 
 one:
   start: 2016-03-28
-  end: 2016-03-28
-  description: MyString
-  user_id: 
+  end: 2020-03-28
+  description: DietOne
+  user: michael
 
 two:
   start: 2016-03-28
-  end: 2016-03-28
-  description: MyString
-  user_id: 
+  end: 2020-03-28
+  description: DietTwo
+  user: doc
+
+three:
+  start: 2016-03-28
+  end: 2020-03-28
+  description: DietThree
+  user: michael

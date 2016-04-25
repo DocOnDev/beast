@@ -2,7 +2,7 @@ require 'test_helper'
 
 class FoodGroupsControllerTest < ActionController::TestCase
   setup do
-    @food_group = food_groups(:one)
+    @food_group = food_groups(:protein)
   end
 
   test "should get index" do
@@ -41,7 +41,7 @@ class FoodGroupsControllerTest < ActionController::TestCase
 
   test "should destroy food_group" do
     assert_difference('FoodGroup.count', -1) do
-      delete :destroy, id: @food_group
+      delete :destroy, id: food_groups(:unassigned)
     end
 
     assert_redirected_to food_groups_path
