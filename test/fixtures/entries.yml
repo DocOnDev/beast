@@ -20,3 +20,10 @@ three:
   date: <%= Date.today %>
   portion: 19.99
   description: MyString
+
+four:
+  food_group: vegetable
+  user: jennifer
+  date: <%= Date.today %>
+  portion: 19.99
+  description: MyString

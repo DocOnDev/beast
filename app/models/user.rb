@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def thirty_day_activity?
-   updated_at > 5.days.ago
+   updated_at > 29.days.ago
   end
 
   def active_diet
