@@ -1,13 +1,18 @@
 language: ruby
 rvm:
-  - 2.2.1
+- 2.2.1
 script:
-  - bundle exec rake test
-  - bundle exec rspec
-  - bundle exec rake cucumber
+- bundle exec rake test
+- bundle exec rspec
+- bundle exec rake cucumber
 before_script:
-  - psql -c 'create database beast_test' -U postgres
-  - RAILS_ENV=test bundle exec rake --trace db:migrate
+- psql -c 'create database beast_test' -U postgres
+- RAILS_ENV=test bundle exec rake --trace db:migrate
 addons:
-    code_climate:
-        repo_token: 624173816fd8e77312a169ea5ee7d904ea844382b8182147def2eeac9f0160b1
+  code_climate:
+    repo_token: 624173816fd8e77312a169ea5ee7d904ea844382b8182147def2eeac9f0160b1
+deploy:
+  provider: heroku
+  app: bodybeast
+  api_key:
+    secure: jpgWeQZS/QP1sJSce6VaW/bdrqdET23oZYxFWjtqk7cNeryqAA3LMu0Euv26BFKpB7Ad32bPkpKWogoSx+LcM2+jM3Tl++HRVRPqusnC3M97v/NAPGetPKF6wHhUspqzY0PpuEyRksb8EiPIzo36uOEBEPZi4hXgf1WjuzfgPLh2h+MNBy/rDbznZst5b2VfYqLEMW4SYpDKwUKGvTggDOa/g8nJuIKqw8vNSmeHU4VN4PbfU2si84gdCGBN+Ct6mYg4P6YtHzGfpA60UASwgvWZjfl/EwB2kaczxKcvIvkhJhzddu5jY4u4ISdR4O/Z4uY9lk978v8oMtJpjJIDRNWaDsOCtPQ4q9cQYfd9BA4d0yRBMnz3Sss8Mp+OR27c/A539b3RKv+TeclWbdqeCVBh0VGqn8Z2dcmgmQaeOIk4kWHiTQu2o1jDn9J+8Ll3QuOAlbRhzustuHY/UK1/aeWyy72wUqOr1dN2VCgAh1vzaeei82fhsEu+jzP+kzGXJeUVXEMS5jt+IQMxO0HROZuTJth/Nf6yk3Dv2HyQJRPhcmoxsRuEp5BLPuyqTkjMtk2Ng2l7wP26dyfNi5Uo5B9Y5zKWLGER2mXvfoIo4PrXiqOESYzGhgqxsUWXoTS7GdA1ZzfLnCtGAmp+l9XEUDU7ij0K+oGfBeO7y5+kl5s=
