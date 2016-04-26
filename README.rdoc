@@ -1,4 +1,5 @@
 == README
+{<img src="https://travis-ci.org/DocOnDev/beast.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/DocOnDev/beast]
 
 {<img src="https://codeclimate.com/github/DocOnDev/beast/badges/gpa.svg" />}[https://codeclimate.com/github/DocOnDev/beast]
 
