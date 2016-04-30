@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
    updated_at > 29.days.ago
   end
 
+  def has_active_diet?
+    active_diet ? true : false
+  end
+
   def active_diet
     now = Time.zone.now
     diets.where('"start" < ? AND "end" > ?', now, now).take
@@ -30,14 +34,13 @@ class User < ActiveRecord::Base
   end
 
   def daily_progress(_date = Time.zone.now.to_date)
-    # Get the allotted daily amounts for each food
-    # Get the logged amount
-    # progress_data = {"food_group_name" : {"target" : intake.quantity, "consumed" : daily_food_log[x]}, ...}
     progress = {}
-    active_diet.intakes.each do |intake|
-      log = daily_food_log(_date)
-      name = intake.food_group.name
-      progress[name] = {:target => (intake.quantity + 0.0), :consumed => log[name], :remaining => (intake.quantity - log[name]), :percent => ((log[name] / intake.quantity) * 100) }
+    if active_diet && active_diet.intakes
+      active_diet.intakes.each do |intake|
+        log = daily_food_log(_date)
+        name = intake.food_group.name
+        progress[name] = {:target => (intake.quantity + 0.0), :consumed => log[name], :remaining => (intake.quantity - log[name]), :percent => ((log[name] / intake.quantity) * 100) }
+      end
     end
     progress
   end

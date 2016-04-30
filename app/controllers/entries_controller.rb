@@ -1,4 +1,4 @@
-class EntriesController < ApplicationController
+class EntriesController < BaseController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
 
   # GET /entries
@@ -65,15 +65,8 @@ class EntriesController < ApplicationController
   # PATCH/PUT /entries/1
   # PATCH/PUT /entries/1.json
   def update
-    respond_to do |format|
-      if @entry.update(entry_params)
-        format.html { redirect_to session.delete(:return_to), notice: 'Entry was successfully updated.' }
-        format.json { render :show, status: :ok, location: @entry }
-      else
-        format.html { render :edit }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
-    end
+    @update_success = @entry.update(entry_params)
+    super
   end
 
   # DELETE /entries/1

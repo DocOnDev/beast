@@ -22,6 +22,11 @@ class UserTest < ActiveSupport::TestCase
     assert doc.thirty_day_activity?
   end
 
+  test "has_active_diet?" do
+    michael = users(:michael)
+    assert michael.has_active_diet?
+  end
+
   test "active_diet" do
     michael = users(:michael)
     assert michael.active_diet.description == "DietOne"

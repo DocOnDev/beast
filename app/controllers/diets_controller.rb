@@ -1,4 +1,4 @@
-class DietsController < ApplicationController
+class DietsController < BaseController
   before_action :set_diet, only: [:show, :edit, :update, :destroy]
 
   # GET /diets
@@ -47,15 +47,8 @@ class DietsController < ApplicationController
   # PATCH/PUT /diets/1
   # PATCH/PUT /diets/1.json
   def update
-    respond_to do |format|
-      if @diet.update(diet_params)
-        format.html { redirect_to @diet, notice: 'Diet was successfully updated.' }
-        format.json { render :show, status: :ok, location: @diet }
-      else
-        format.html { render :edit }
-        format.json { render json: @diet.errors, status: :unprocessable_entity }
-      end
-    end
+    @update_success = @diet.update(diet_params)
+    super
   end
 
   # DELETE /diets/1

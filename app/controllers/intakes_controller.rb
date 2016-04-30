@@ -1,4 +1,4 @@
-class IntakesController < ApplicationController
+class IntakesController < BaseController
   before_action :set_intake, only: [:show, :edit, :update, :destroy]
 
   # GET /intakes
@@ -41,15 +41,8 @@ class IntakesController < ApplicationController
   # PATCH/PUT /intakes/1
   # PATCH/PUT /intakes/1.json
   def update
-    respond_to do |format|
-      if @intake.update(intake_params)
-        format.html { redirect_to @intake, notice: 'Intake was successfully updated.' }
-        format.json { render :show, status: :ok, location: @intake }
-      else
-        format.html { render :edit }
-        format.json { render json: @intake.errors, status: :unprocessable_entity }
-      end
-    end
+    @update_success = @intake.update(intake_params)
+    super
   end
 
   # DELETE /intakes/1

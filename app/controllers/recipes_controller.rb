@@ -1,4 +1,4 @@
-class RecipesController < ApplicationController
+class RecipesController < BaseController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   # GET /recipes
@@ -89,15 +89,9 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to recipes_url, notice: "#{@recipe.name} recipe was successfully updated." }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
+    @redirect_location = recipes_url
+    @update_success = @recipe.update(recipe_params)
+    super
   end
 
   # DELETE /recipes/1

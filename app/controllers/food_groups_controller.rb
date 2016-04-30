@@ -1,4 +1,4 @@
-class FoodGroupsController < ApplicationController
+class FoodGroupsController < BaseController
   before_action :set_food_group, only: [:show, :edit, :update, :destroy]
 
   # GET /food_groups
@@ -40,15 +40,8 @@ class FoodGroupsController < ApplicationController
   # PATCH/PUT /food_groups/1
   # PATCH/PUT /food_groups/1.json
   def update
-    respond_to do |format|
-      if @food_group.update(food_group_params)
-        format.html { redirect_to @food_group, notice: 'Food group was successfully updated.' }
-        format.json { render :show, status: :ok, location: @food_group }
-      else
-        format.html { render :edit }
-        format.json { render json: @food_group.errors, status: :unprocessable_entity }
-      end
-    end
+    @update_success = @food_group.update(food_group_params)
+    super
   end
 
   # DELETE /food_groups/1

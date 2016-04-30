@@ -1,4 +1,4 @@
-class DiariesController < ApplicationController
+class DiariesController < BaseController
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
 
   # GET /diaries
@@ -48,18 +48,9 @@ class DiariesController < ApplicationController
   # PATCH/PUT /diaries/1
   # PATCH/PUT /diaries/1.json
   def update
-
-    redirect_location = session.delete(:diary_return_to) || @diary
-
-    respond_to do |format|
-      if @diary.update(diary_params)
-        format.html { redirect_to redirect_location, notice: 'Diary was successfully updated.' }
-        format.json { render :show, status: :ok, location: @diary }
-      else
-        format.html { render :edit }
-        format.json { render json: @diary.errors, status: :unprocessable_entity }
-      end
-    end
+    @redirect_location = session.delete(:diary_return_to) || @diary
+    @update_success = @diary.update(diary_params)
+    super
   end
 
   # DELETE /diaries/1
