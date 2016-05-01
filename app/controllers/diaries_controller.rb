@@ -31,18 +31,8 @@ class DiariesController < BaseController
   # POST /diaries.json
   def create
     @diary = Diary.new(diary_params)
-
-    redirect_location = session.delete(:diary_return_to) || @diary
-
-    respond_to do |format|
-      if @diary.save
-        format.html { redirect_to redirect_location, notice: 'Diary was successfully created.' }
-        format.json { render :show, status: :created, location: @diary }
-      else
-        format.html { render :new }
-        format.json { render json: @diary.errors, status: :unprocessable_entity }
-      end
-    end
+    @redirect_location = session.delete(:diary_return_to) || @diary
+    super
   end
 
   # PATCH/PUT /diaries/1

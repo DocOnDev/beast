@@ -32,16 +32,7 @@ class DietsController < BaseController
   # POST /diets.json
   def create
     @diet = Diet.new(diet_params)
-
-    respond_to do |format|
-      if @diet.save
-        format.html { redirect_to @diet, notice: 'Diet was successfully created.' }
-        format.json { render :show, status: :created, location: @diet }
-      else
-        format.html { render :new }
-        format.json { render json: @diet.errors, status: :unprocessable_entity }
-      end
-    end
+    super
   end
 
   # PATCH/PUT /diets/1
