@@ -10,6 +10,10 @@ Given(/^I am on the homepage$/) do
   step "I visit the homepage"
 end
 
+When(/^I visit the home page$/) do
+  step "I visit the homepage"
+end
+
 
 When(/^I visit the homepage$/) do
   visit root_path
