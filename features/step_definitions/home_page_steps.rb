@@ -41,7 +41,7 @@ When(/^I create a diary entry with narrative "([^"]*)"$/) do |narrative|
 end
 
 When(/^I update the diary Entry narrative with "([^"]*)"$/) do |narrative|
-  click_button "Create Diary" # commit the first entry, then update.
+  click_button "Create Diary"
   fill_in "diary_narrative", :with => narrative
   click_button "Update Diary"
 end

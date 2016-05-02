@@ -21,3 +21,13 @@ end
 Then(/^I should see the "([^"]*)" food entry$/) do |description|
   page.should have_content(description)
 end
+
+Given(/^I have a food entry for today with the description "([^"]*)"$/) do |description|
+  @entry = FactoryGirl.create(:entry, description: description)
+end
+
+When(/^I update the food entry with the description "([^"]*)"$/) do |description|
+  visit edit_entry_path(@entry)
+  fill_in "entry_description", :with => description
+  click_button "Update Entry"
+end
