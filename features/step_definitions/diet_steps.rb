@@ -11,12 +11,11 @@ Then(/^I should see a diets list$/) do
 end
 
 When(/^I add an active diet with the description "([^"]*)"$/) do |description|
-  @diet = FactoryGirl.create(:diet, description: description)
   visit new_diet_path
-  fill_in "diet_description", :with => @diet.description
+  fill_in "diet_description", :with => description
   click_button "Create Diet"
 end
 
 Then(/^I should see the diet with the description "([^"]*)"$/) do |description|
-  page.should have_content(@diet.description)
+  page.should have_content(description)
 end

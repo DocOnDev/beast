@@ -50,16 +50,8 @@ class EntriesController < BaseController
   # POST /entries.json
   def create
     @entry = Entry.new(entry_params)
-
-    respond_to do |format|
-      if @entry.save
-        format.html { redirect_to session.delete(:return_to), notice: 'Entry was successfully created.' }
-        format.json { render :show, status: :created, location: @entry }
-      else
-        format.html { render :new }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
-    end
+    @redirect_location = session.delete(:return_to) || @entry
+    super
   end
 
   # PATCH/PUT /entries/1
