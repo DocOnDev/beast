@@ -26,16 +26,7 @@ class IntakesController < BaseController
   # POST /intakes.json
   def create
     @intake = Intake.new(intake_params)
-
-    respond_to do |format|
-      if @intake.save
-        format.html { redirect_to @intake, notice: 'Intake was successfully created.' }
-        format.json { render :show, status: :created, location: @intake }
-      else
-        format.html { render :new }
-        format.json { render json: @intake.errors, status: :unprocessable_entity }
-      end
-    end
+    super
   end
 
   # PATCH/PUT /intakes/1

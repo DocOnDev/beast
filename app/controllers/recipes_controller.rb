@@ -74,6 +74,7 @@ class RecipesController < BaseController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
+    @redirect_location = recipes_url
     super
   end
 

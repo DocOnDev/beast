@@ -26,6 +26,10 @@ class DietsController < BaseController
 
   # GET /diets/1/edit
   def edit
+    food_groups = FoodGroup.all
+    food_groups.each {|fg|
+      @diet.intakes.build(:food_group_id => fg.id) if !@diet.intakes.find_by(:food_group_id => fg.id)
+    }
   end
 
   # POST /diets
