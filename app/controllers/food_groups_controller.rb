@@ -25,16 +25,7 @@ class FoodGroupsController < BaseController
   # POST /food_groups.json
   def create
     @food_group = FoodGroup.new(food_group_params)
-
-    respond_to do |format|
-      if @food_group.save
-        format.html { redirect_to @food_group, notice: 'Food group was successfully created.' }
-        format.json { render :show, status: :created, location: @food_group }
-      else
-        format.html { render :new }
-        format.json { render json: @food_group.errors, status: :unprocessable_entity }
-      end
-    end
+    super
   end
 
   # PATCH/PUT /food_groups/1
