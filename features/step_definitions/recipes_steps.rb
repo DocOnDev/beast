@@ -15,3 +15,17 @@ end
 Then(/^I should see the recipe with the name "([^"]*)"$/) do |name|
   page.should have_content(name)
 end
+
+Given(/^I have an existing recipe with no web page$/) do
+  @recipe = FactoryGirl.create(:recipe)
+  visit edit_recipe_path(@recipe)
+end
+
+When(/^I assign the web page "([^"]*)"$/) do |web_page|
+  fill_in "recipe_web_page", :with => web_page
+  click_button "Update Recipe"
+end
+
+Then(/^I should see the recipe with a link to "([^"]*)" in the recipe listing$/) do |web_page|
+  page.should have_selector("a[href='#{web_page}']")
+end

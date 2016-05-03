@@ -1,8 +1,11 @@
+require 'open-uri'
+
 class Recipe < ActiveRecord::Base
   has_many :nutritional_values
   has_many :food_groups, :through => :nutritional_values
+  validate :check_url
 
-  before_save :mark_nv_for_removal, :check_url
+  before_save :mark_nv_for_removal
 
 def mark_nv_for_removal
   nutritional_values.each do |nv|
@@ -28,8 +31,9 @@ end
 
   def check_url
     if self.web_page && !self.web_page.empty?
-        self.web_page = /^http/i.match(self.web_page) ? self.web_page : "http://#{self.web_page}"
-      end
+      self.web_page = /^http/i.match(self.web_page) ? self.web_page : "http://#{self.web_page}"
+      # errors.add(:web_page, "must be a valid Web Address") if (self.web_page =~ URI::regexp(%w(http https))) != 0
+    end
   end
 
 end
