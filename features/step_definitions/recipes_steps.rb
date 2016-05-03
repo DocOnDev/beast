@@ -29,3 +29,12 @@ end
 Then(/^I should see the recipe with a link to "([^"]*)" in the recipe listing$/) do |web_page|
   page.should have_selector("a[href='#{web_page}']")
 end
+
+When(/^I attempt to assign the web page "([^"]*)"$/) do |web_page|
+  fill_in "recipe_web_page", :with => web_page
+  click_button "Update Recipe"
+end
+
+Then(/^I should see an error message$/) do
+  page.should have_content("error")
+end

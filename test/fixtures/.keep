@@ -1,0 +1,1 @@
+# errors.add(:web_page, "must be a valid Web Address") if (self.web_page =~ URI::regexp(%w(http https))) != 0
