@@ -32,7 +32,12 @@ end
   def check_url
     if self.web_page && !self.web_page.empty?
       self.web_page = /^http/i.match(self.web_page) ? self.web_page : "http://#{self.web_page}"
-      errors.add(:web_page, "must be a valid Web Address") if (self.web_page != "http://www.foodnetwork.com")
+      begin
+        resp = URI.parse(self.web_page).kind_of?(URI::HTTP)
+      rescue URI::InvalidURIError
+        resp = false
+      end
+      errors.add(:web_page, "must be a valid Web Address") unless resp == true
     end
   end
 
