@@ -8,4 +8,11 @@ class RecipeTest < ActiveSupport::TestCase
     found_items = Recipe.search("Meatloaf")
     assert found_items[0].name == "Meatloaf"
   end
+
+  test "should not allow update of recipe with invalid URL" do
+    soup = recipes(:soup)
+    soup.web_page = 'stuff and things'
+    assert_not soup.save
+  end
+
 end
