@@ -19,21 +19,17 @@ When(/^I visit the homepage$/) do
   visit root_path
 end
 
-Then(/^I should see the "([^"]*)" diary entry$/) do |narrative|
-  page.should have_content(narrative)
-end
-
-Then(/^I should see the "([^"]*)" button$/) do |button_text|
-  page.should have_button(button_text)
-end
-
-
 Given(/^I have no diary entry for today$/) do
 end
 
 Then(/^I should not see a diary entry$/) do
   page.should have_field("diary_narrative", with: "")
 end
+
+Then(/^I should see a diary entry with the narrative "([^"]*)"$/) do |narrative|
+  page.should have_content(narrative)
+end
+
 
 When(/^I create a diary entry with narrative "([^"]*)"$/) do |narrative|
   fill_in "diary_narrative", :with => narrative
