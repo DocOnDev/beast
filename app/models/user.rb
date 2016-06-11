@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   def active_diet
     now = Time.zone.now
-    diets.where('"start" < ? AND "end" > ?', now, now).take
+    diets.where('"start_date" < ? AND "end_date" > ?', now, now).take
   end
 
   def active_food_groups

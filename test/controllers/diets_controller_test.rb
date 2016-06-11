@@ -19,7 +19,7 @@ class DietsControllerTest < ActionController::TestCase
 
   test "should create diet" do
     assert_difference('Diet.count') do
-      post :create, diet: { description: @diet.description, end: @diet.end, start: @diet.start, user_id: @diet.user_id }
+      post :create, diet: { description: 'New Diet', end_date: 10.years.ago(@diet.end_date), start_date: 10.years.ago(@diet.start_date), user_id: @diet.user_id }
     end
 
     assert_redirected_to diet_path(assigns(:diet))
@@ -36,7 +36,7 @@ class DietsControllerTest < ActionController::TestCase
   end
 
   test "should update diet" do
-    patch :update, id: @diet, diet: { description: @diet.description, end: @diet.end, start: @diet.start, user_id: @diet.user_id }
+    patch :update, id: @diet, diet: { description: 'New Diet Description', end_date: @diet.end_date, start_date: @diet.start_date, user_id: @diet.user_id }
     assert_redirected_to diet_path(assigns(:diet))
   end
 

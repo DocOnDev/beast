@@ -64,6 +64,6 @@ class DietsController < BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def diet_params
-      params.require(:diet).permit(:start, :end, :description, :user_id, intakes_attributes: [:id, :diet_id, :food_group_id, :quantity])
+      params.require(:diet).permit(:start_date, :end_date, :description, :user_id, intakes_attributes: [:id, :diet_id, :food_group_id, :quantity])
     end
 end

@@ -5,6 +5,8 @@ class Diet < ActiveRecord::Base
 
   accepts_nested_attributes_for :intakes
 
+  validates :start_date, :end_date, :overlap => {:scope => "user_id"}
+
   before_save :mark_intake_for_removal
 
   def mark_intake_for_removal
@@ -12,6 +14,5 @@ class Diet < ActiveRecord::Base
       intake.mark_for_destruction if intake.quantity.blank?
     end
   end
-
 
 end

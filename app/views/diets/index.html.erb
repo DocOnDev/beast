@@ -14,8 +14,8 @@
   <tbody>
     <% @diets.each do |diet| %>
       <tr>
-        <td><%= diet.start %></td>
-        <td><%= diet.end %></td>
+        <td><%= diet.start_date %></td>
+        <td><%= diet.end_date %></td>
         <td><%= diet.description %></td>
         <td><%= diet.user.email %></td>
         <td><%= link_to 'Show', diet %></td>

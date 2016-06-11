@@ -29,6 +29,9 @@ gem 'devise'
 # For awesome fonts
 gem 'font-awesome-sass'
 
+# For date overlaps
+gem 'validates_overlap'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

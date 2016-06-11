@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :diet do
-    start 2.days.ago
+    start_date 2.days.ago
+    end_date 5.days.until
     description "Factory description for Active Diet"
   end
 end
